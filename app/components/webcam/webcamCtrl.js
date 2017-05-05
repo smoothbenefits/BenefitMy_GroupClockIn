@@ -44,7 +44,7 @@
             DialogController.$inject = ["$scope", "image"];
             $mdDialog.show({
                 controller: DialogController,
-                templateUrl: "views/templates/confirmDialog.tmpl.html",
+                templateUrl: "app/components/templates/confirmDialog.tmpl.html",
                 parent: angular.element(document.body),
                 clickOutsideToClose:false,
                 fullscreen: true,
