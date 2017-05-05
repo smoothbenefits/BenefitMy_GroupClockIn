@@ -1,5 +1,5 @@
 //ng-annotate
-timeTrackingApp.factory("userService", ["$q", "$http", "userModel", "StageBASEURL", "companyModel", "$state", function($q, $http, userModel, StageBASEURL, companyModel, $state){
+timeTrackingApp.factory("userService", ["$q", "$http", "userModel", "ENV_VARS", "companyModel", "$state", function($q, $http, userModel, ENV_VARS, companyModel, $state){
     return {
         pinLogin: function (pin) {
             if(companyModel.getCompanyID() === false) {
@@ -9,7 +9,7 @@ timeTrackingApp.factory("userService", ["$q", "$http", "userModel", "StageBASEUR
             var defer= $q.defer();
 
             $http({
-                url:  StageBASEURL+ "company/"+ companyModel.getCompanyID() + "/pin/" + pin +"/employee_profile",
+                url:  ENV_VARS.StageBASEURL+ "company/"+ companyModel.getCompanyID() + "/pin/" + pin +"/employee_profile",
                 method: "GET",
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
@@ -32,7 +32,7 @@ timeTrackingApp.factory("userService", ["$q", "$http", "userModel", "StageBASEUR
             var defer=$q.defer();
 
             $http({
-                url: StageBASEURL + "employee_profile/BMHT_3_babf7c42f76af6f81486d76ff6e33505",
+                url: ENV_VARS.StageBASEURL + "employee_profile/BMHT_3_babf7c42f76af6f81486d76ff6e33505",
                 method: "PUT",
                 data: {
                     "pin" :"888888",

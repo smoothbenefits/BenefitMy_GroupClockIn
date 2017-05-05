@@ -1,5 +1,5 @@
 //ng-annotate
-timeTrackingApp.factory("AuthService", ["localStorageService", "$http", "$q", "StageBASEURL", "companyModel", function(localStorageService, $http, $q, StageBASEURL, companyModel) {
+timeTrackingApp.factory("AuthService", ["localStorageService", "$http", "$q", "ENV_VARS", "companyModel", function(localStorageService, $http, $q, ENV_VARS, companyModel) {
     var currentUser;
 
     function serializeData( data ) {
@@ -38,7 +38,7 @@ timeTrackingApp.factory("AuthService", ["localStorageService", "$http", "$q", "S
             var requestData = serializeData({"email": username, "password":password});
 
             $http({
-                url: StageBASEURL + "user/auth/",
+                url: ENV_VARS.StageBASEURL + "user/auth/",
                 method: "POST",
                 data:requestData,
                 headers: {

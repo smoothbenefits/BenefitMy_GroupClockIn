@@ -1,5 +1,10 @@
 'use strict';
 
+var ENV = process.env.APP_ENV || 'development';
+
+// Here, we use dotenv  to load our env vars in the .env, into process.env
+require('dotenv').config();
+
 var gulp = require('gulp');
 
 // plugins
@@ -103,11 +108,9 @@ gulp.task('ng-config', function() {
         JSON.stringify(config[ENV]));
     gulp.src('./config.json')
         .pipe(
-            ngConfig('timeTrackingApp.config', {
-                createModule: false
-            })
+            ngConfig('timeTrackingApp.config')
         )
-        .pipe(gulp.dest('./app/scripts/'))
+        .pipe(gulp.dest('./app/config/'))
 });
 
 gulp.task('browserify', ['ng-config'], function() {

@@ -1,5 +1,5 @@
 //ng-annotate
-timeTrackingApp.factory("timeTrackingService", ["localStorageService", "$http", "$q", "$httpParamSerializer", "StageBASEURL", "userModel", "companyModel", "DemoTimeServiceURL", function(localStorageService, $http, $q, $httpParamSerializer, StageBASEURL, userModel, companyModel, DemoTimeServiceURL) {
+timeTrackingApp.factory("timeTrackingService", ["localStorageService", "$http", "$q", "$httpParamSerializer", "ENV_VARS", "userModel", "companyModel", function(localStorageService, $http, $q, $httpParamSerializer, ENV_VARS, userModel, companyModel) {
     return {
         punchTime: function(data) {
             var lastStatus = localStorageService.get("lastStatus");
@@ -29,11 +29,11 @@ timeTrackingApp.factory("timeTrackingService", ["localStorageService", "$http", 
                     "imageDetectionAsset": {
                         "referenceImageAsset": {
                             "url": userModel.getGoldenPhoto(),
-                            "bucketName": "benefitmy-staging-profile-assets"
+                            "bucketName": ENV_VARS.IMAGE_S3_BUCKET
                         },
                         "realTimeImageAsset": {
                             "url": data.url,
-                            "bucketName": "benefitmy-staging-profile-assets"
+                            "bucketName": ENV_VARS.IMAGE_S3_BUCKET
                         },
                         "confidence": data.confidence
                     }
@@ -42,7 +42,7 @@ timeTrackingApp.factory("timeTrackingService", ["localStorageService", "$http", 
             };
 
             $http({
-                url: DemoTimeServiceURL + "time_punch_cards",
+                url: ENV_VARS.DemoTimeServiceURL + "time_punch_cards",
                 method: "POST",
                 data:requestData,
                 headers: {
@@ -79,11 +79,11 @@ timeTrackingApp.factory("timeTrackingService", ["localStorageService", "$http", 
                     "imageDetectionAsset": {
                         "referenceImageAsset": {
                             "url": "benefitmy-staging-profile-assets",
-                            "bucketName": "benefitmy-staging-profile-assets"
+                            "bucketName": ENV_VARS.IMAGE_S3_BUCKET
                         },
                         "realTimeImageAsset": {
                             "url": data.url,
-                            "bucketName": "benefitmy-staging-profile-assets"
+                            "bucketName": ENV_VARS.IMAGE_S3_BUCKET
                         },
                         "confidence": data.confidence
                     }
@@ -94,7 +94,7 @@ timeTrackingApp.factory("timeTrackingService", ["localStorageService", "$http", 
             var lastStatus = localStorageService.get("lastStatus");
 
             $http({
-                url: DemoTimeServiceURL+ "time_punch_cards/" + lastStatus[0]._id,
+                url: ENV_VARS.DemoTimeServiceURL+ "time_punch_cards/" + lastStatus[0]._id,
                 method: "PUT",
                 data:requestData,
                 headers: {
@@ -118,7 +118,7 @@ timeTrackingApp.factory("timeTrackingService", ["localStorageService", "$http", 
         getUserLatestTimeCardStatus: function() {
             var currentUser = userModel.getCurrentUser();
             $http({
-                url: DemoTimeServiceURL+ "employee/" + "stage_"+currentUser.person.id + "/time_punch_cards?inprogress=true",
+                url: ENV_VARS.DemoTimeServiceURL+ "employee/" + "stage_"+currentUser.person.id + "/time_punch_cards?inprogress=true",
                 method: "GET"
             }).then(function(response){
                 localStorageService.set("lastStatus", response.data);

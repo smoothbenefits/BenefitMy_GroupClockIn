@@ -38,7 +38,7 @@
 
             webcam.patData = idata;
 
-            webcam.success(webcam.snapshotData);
+            webcam.showDialog(webcam.snapshotData);
         };
 
         webcam.onSuccess = function () {

@@ -2,7 +2,10 @@
 var shared = {
     StageBASEURL: process.env.STAGING_BASE_URL,
     DemoTimeServiceURL: process.env.TIME_SERVICE_URL,
-    environment: process.env.APP_ENV
+    environment: process.env.APP_ENV,
+    AWSAccessKeyId: process.env.AWS_ACCESSKEY,
+    AWSSecretAccessKey: process.env.AWS_SECRETKEY,
+    IMAGE_S3_BUCKET: process.env.S3_BUCKET
 };
 
 //

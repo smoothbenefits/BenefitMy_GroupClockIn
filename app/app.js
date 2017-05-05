@@ -1,4 +1,4 @@
-var timeTrackingApp = window.angular.module("timeTrackingApp", ["LocalStorageModule", "webcam", "ngAnimate", "ui.router", "ngMaterial", "anim-in-out"]);
+var timeTrackingApp = window.angular.module("timeTrackingApp", ["LocalStorageModule", "webcam", "ngAnimate", "ui.router", "ngMaterial", "anim-in-out", "timeTrackingApp.config"]);
 
 timeTrackingApp.config(["$stateProvider", "$urlRouterProvider", function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.when("", "/pinLogin");
@@ -66,9 +66,6 @@ timeTrackingApp.run(["$rootScope", "$state", "localStorageService", function ($r
         }
     });
 }]);
-
-timeTrackingApp.constant("StageBASEURL", "https://benefitmy-python-staging.herokuapp.com/api/v1/");
-timeTrackingApp.constant("DemoTimeServiceURL", "https://demotimetracking.workbenefits.me/api/v1/");
 
 timeTrackingApp.config(["$httpProvider", function ($httpProvider) {
     $httpProvider.interceptors.push(["$timeout", "$q", "$window", "$injector", "$rootScope", function ($timeout, $q, $window, $injector, $rootScope) {

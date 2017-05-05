@@ -40,7 +40,7 @@
             );
         };
 
-        webcamService.webcam.success = function(image) {
+        webcamService.webcam.showDialog = function(image) {
             DialogController.$inject = ["$scope", "image"];
             $mdDialog.show({
                 controller: DialogController,

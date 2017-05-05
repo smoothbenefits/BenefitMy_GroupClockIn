@@ -1,13 +1,13 @@
 //ng-annotate
 timeTrackingApp
-    .factory("faceRecognitionService", ["$http", "$q", "userModel", "localStorageService", "timeTrackingService", "companyModel", "StageBASEURL", function($http, $q, userModel, localStorageService, timeTrackingService, companyModel, StageBASEURL) {
+    .factory("faceRecognitionService", ["$http", "$q", "userModel", "localStorageService", "timeTrackingService", "companyModel", "ENV_VARS", function($http, $q, userModel, localStorageService, timeTrackingService, companyModel, ENV_VARS) {
 
-        AWS.config.update({ accessKeyId: "AKIAJVLVZOIR5KDYVMTA", secretAccessKey: "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" });
+        AWS.config.update({ accessKeyId: ENV_VARS.AWSAccessKeyId, secretAccessKey: ENV_VARS.AWSSecretAccessKey });
         AWS.config.region = "us-east-1";
 
         var rekognition = new AWS.Rekognition();
 
-        var bucket = new AWS.S3({ params: { Bucket: "benefitmy-staging-profile-assets" }});
+        var bucket = new AWS.S3({ params: { Bucket: ENV_VARS.IMAGE_S3_BUCKET }});
 
         function dataURItoBlobHelper(dataURI) {
             var binary = atob(dataURI.split(",")[1]);
@@ -56,7 +56,7 @@ timeTrackingApp
                     var photoUrl = data.Location;
 
                     $http({
-                        url: StageBASEURL + userModel.getUserID(),
+                        url: ENV_VARS.StageBASEURL + userModel.getUserID(),
                         method: "PUT",
                         data: {
                             "photo_url" :photoUrl,
@@ -94,13 +94,13 @@ timeTrackingApp
                         SimilarityThreshold: 1,
                         SourceImage: {
                             S3Object: {
-                                Bucket: "benefitmy-staging-profile-assets",
+                                Bucket: ENV_VARS.IMAGE_S3_BUCKET,
                                 Name: userModel.getGoldenPhotoID()
                             }
                         },
                         TargetImage: {
                             S3Object: {
-                                Bucket: "benefitmy-staging-profile-assets",
+                                Bucket: ENV_VARS.IMAGE_S3_BUCKET,
                                 Name: data.key
                             }
                         }
