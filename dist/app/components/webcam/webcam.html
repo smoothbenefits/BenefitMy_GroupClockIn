@@ -1,0 +1,24 @@
+<div class="top-right-corner">
+    <md-button class="md-fab" aria-label="exit" ng-click="exitWebcam()">
+        <i class="material-icons md-36" style="margin-top:10px">close</i>
+    </md-button>
+</div>
+<div ng-controller="WebcamCtrl" layout="column" layout-align="center center" style="height: 100%;">
+    <div flex>
+        <div class="webcam-cicle">
+            <webcam channel="channel"
+                    on-streaming="onSuccess()"
+                    on-error="onError(err)"
+                    on-stream="onStream(stream)"
+            ></webcam>
+        </div>
+    </div>
+
+    <div flex ng-show="showButton">
+        <md-button ng-click="makeSnapshot()" class="md-raised md-primary">Snap</md-button>
+        <span>Hi, {{username}} We'll snap your picture while you clock {{status}}.</span>
+        <p>{{lastClockIn}}</p>
+    </div>
+
+    <canvas ng-hide="true" id="snapshot" width="250" height="250"></canvas>
+</div>

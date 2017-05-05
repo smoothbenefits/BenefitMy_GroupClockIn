@@ -1,0 +1,1 @@
+timeTrackingApp.controller("LoginCtrl",["$scope","$http","localStorageService","$state","AuthService",function(o,i,n,r,e){o.formSubmit=function(){o.isLoginLoading=!0,e.login(o.email,o.password).then(function(){o.error="",o.email="",o.password="",o.isLoginLoading=!1,r.go("pinLogin")},function(){o.isLoginLoading=!1,o.error="Incorrect username/password !",o.password=""})}}]);

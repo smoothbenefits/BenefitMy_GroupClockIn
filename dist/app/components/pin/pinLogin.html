@@ -1,0 +1,97 @@
+<div class="anim-slide-below-fade">
+		<md-progress-linear md-mode="indeterminate" ng-show="isLoading"></md-progress-linear>
+		<div id="pin">
+			<div style="width:350px; padding-top: 2em">
+				<div style="float: left; width:150px; padding-left: 65px">
+					<div id="input_field" class="dot" ng-bind="pin_input" flex></div>
+				</div>
+				<div style="float: right; text-align:center;line-height:80px;" ng-click="pinBackspace()">
+					<img src="assets/delete.png" style="padding-left: 65px; cursor: pointer; vertical-align: middle;"/>
+				</div>
+			</div>
+			<p class="hint">Please enter your PIN and press Login</p>
+			<div class="numbers">
+				<div class="num-pad">
+					<div class="span4">
+						<div class="num">
+							<div class="digit">
+								1
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="num-pad">
+					<div class="span4">
+						<div class="num">
+							<div class="digit">2</div>
+						</div>
+					</div>
+				</div>
+				<div class="num-pad">
+					<div class="span4">
+						<div class="num">
+							<div class="digit">3</div>
+						</div>
+					</div>
+				</div>
+				<div class="num-pad">
+					<div class="span4">
+						<div class="num">
+							<div class="digit">4</div>
+						</div>
+					</div>
+				</div>
+				<div class="num-pad">
+					<div class="span4">
+						<div class="num">
+							<div class="digit">5</div>
+						</div>
+					</div>
+				</div>
+				<div class="num-pad">
+					<div class="span4">
+						<div class="num">
+							<div class="digit">6</div>
+						</div>
+					</div>
+				</div>
+				<div class="num-pad">
+					<div class="span4">
+						<div class="num">
+							<div class="digit">7</div>
+						</div>
+					</div>
+				</div>
+				<div class="num-pad">
+					<div class="span4">
+						<div class="num">
+							<div class="digit">8</div>
+						</div>
+					</div>
+				</div>
+				<div class="num-pad">
+					<div class="span4">
+						<div class="num">
+							<div class="digit">9</div>
+						</div>
+					</div>
+				</div>
+				<div class="num-pad">
+					<div class="span4">
+					</div>
+				</div>
+				<div class="num-pad">
+					<div class="span4">
+						<div class="num">
+							<div class="digit">0</div>
+						</div>
+					</div>
+				</div>
+				<div class="num-pad">
+					<div class="span4">
+					</div>
+				</div>
+				<md-button ng-click="pinDone()" class="md-raised md-primary md-large">Login</md-button>
+			</div>
+		</div>
+</div>

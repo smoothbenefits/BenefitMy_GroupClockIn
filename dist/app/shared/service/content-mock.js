@@ -1,0 +1,1 @@
+!function(){"use strict";angular.module("content-mocks",["ngMockE2E"]).run(["$httpBackend",function(n){var t=!1;n.whenPOST("user/auth").respond(function(n,u,e){return t=!0,[200]}),n.whenGET(/.*/).passThrough()}])}();
