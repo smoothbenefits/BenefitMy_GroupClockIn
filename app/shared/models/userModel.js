@@ -19,12 +19,20 @@ timeTrackingApp.factory("userModel", ["localStorageService", function(localStora
             return user.person.first_name + " " + user.person.last_name;
         },
 
+        getUserProfile: function () {
+            user = localStorageService.get("currentUserProfile");
+
+            if(user === null) return false;
+
+            return user;
+        },
+
         getUserID: function () {
             user = localStorageService.get("currentUserProfile");
 
             if(user === null) return false;
 
-            return user.person.id;
+            return user.id;
         },
 
         getUserEmail: function () {

@@ -55,14 +55,18 @@ timeTrackingApp
 
                     var photoUrl = data.Location;
 
+                    var requestData = userModel.getUserProfile();
+
+                    //modify request data
+                    requestData.photo_url = photoUrl;
+                    requestData.manager = requestData.manager.id;
+                    requestData.person = requestData.person.id;
+                    requestData.company = companyModel.getCompanyID();
+
                     $http({
                         url: ENV_VARS.StageBASEURL + userModel.getUserID(),
                         method: "PUT",
-                        data: {
-                            "photo_url" :photoUrl,
-                            "person":  userModel.getUserID(),
-                            "company" : companyModel.getCompanyID()
-                        },
+                        data: requestData,
                         headers: {
                             "Content-Type": "application/json"
                         }
