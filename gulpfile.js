@@ -99,7 +99,7 @@ gulp.task('default', ['lint', 'server', 'watch']);
 gulp.task('build', function() {
   runSequence(
     //['clean'],
-    ['lint', 'minify-css', 'add-annotation', 'minify-js', 'copy-files', 'copy-html-file', 'copy-assets', 'copy-bower-components', 'connectDist']
+    ['lint', 'minify-css', 'add-annotation', 'minify-js', 'copy-files', 'copy-html-file', 'copy-assets', 'copy-bower-components']
   );
 });
 
