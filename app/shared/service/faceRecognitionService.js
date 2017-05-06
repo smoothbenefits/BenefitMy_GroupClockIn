@@ -64,7 +64,7 @@ timeTrackingApp
                     requestData.company = companyModel.getCompanyID();
 
                     $http({
-                        url: ENV_VARS.StageBASEURL + userModel.getUserID(),
+                        url: ENV_VARS.StageBASEURL +"employee_profile/" + userModel.getUserID(),
                         method: "PUT",
                         data: requestData,
                         headers: {
