@@ -74,6 +74,7 @@
             });
 
             function DialogController($scope, image) {
+                $scope.dialog_status = userModel.isCurrentUserClockIn()? "out" : "in";
                 $scope.photo = image;
                 $scope.cancel = function() {
                     $mdDialog.cancel();

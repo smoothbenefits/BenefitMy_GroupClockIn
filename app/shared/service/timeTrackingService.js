@@ -18,13 +18,17 @@ timeTrackingApp.factory("timeTrackingService", ["localStorageService", "$http", 
 
             var requestData = {
                 "date" : dateISO,
+                "start" : dateISO,
+                "createdTimestamp": dateISO,
+                "inHours": false,
                 "recordType" : "Work Time",
                 "employee": {
-                    "email" : "stage_" + userModel.getUserEmail(),
+                    "email" :  userModel.getUserEmail(),
+                    "lastName" : userModel.getCurrentUserFisrtName(),
+                    "firstName" : currentUser.last_name,
                     "companyDescriptor" : "stage_" + companyModel.getCompanyID(),
                     "personDescriptor" : "stage_" + userModel.getUserID()
                 },
-                "start" : dateISO,
                 "checkInAssets": {
                     "imageDetectionAsset": {
                         "referenceImageAsset": {
@@ -70,7 +74,9 @@ timeTrackingApp.factory("timeTrackingService", ["localStorageService", "$http", 
                 "date" : dateISO,
                 "recordType" : "Work Time",
                 "employee": {
-                    "email" : "stage_" + userModel.getUserEmail(),
+                    "email" :  userModel.getUserEmail(),
+                    "lastName" : userModel.getCurrentUserFisrtName(),
+                    "firstName" : currentUser.last_name,
                     "companyDescriptor" : "stage_" + companyModel.getCompanyID(),
                     "personDescriptor" : "stage_" + userModel.getUserID()
                 },
