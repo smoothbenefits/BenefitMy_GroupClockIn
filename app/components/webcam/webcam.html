@@ -14,9 +14,9 @@
         </div>
     </div>
 
-    <div flex ng-show="showButton">
+    <div flex ng-show="showButton" style="text-align: center">
         <p>Hi, {{username}}. {{lastClockIn}}</p>
-        <md-button ng-click="makeSnapshot()" class="md-raised md-primary">clock {{status}}</md-button>
+        <md-button ng-click="makeSnapshot()" class="md-raised md-primary" style="display: inline-block">clock {{status}}</md-button>
     </div>
 
     <canvas ng-hide="true" id="snapshot" width="250" height="250"></canvas>

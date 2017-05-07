@@ -53,18 +53,25 @@
                 }
             }).then(function(response) {
                 if (response === true) {
+                    var displayMessage = "";
                     if (userModel.isCurrentUserClockIn()) {
-                        $mdToast.show($mdToast.simple().textContent("Thank you! " + userModel.getCurrentUserFisrtName() +"，you are Clock Out!")
-                            .position("right"));
+                        displayMessage = "Thank you! " + userModel.getCurrentUserFisrtName() +"，you are Clock Out!";
                     } else {
-                        $mdToast.show($mdToast.simple().textContent("Thank you! " + userModel.getCurrentUserFisrtName() +", you are Clock In!")
-                            .position("right"));
+                        displayMessage = "Thank you! " + userModel.getCurrentUserFisrtName() +", you are Clock In!";
                     }
 
-                    setTimeout(function() {
+                    $mdDialog.show(
+                        $mdDialog.alert()
+                            .clickOutsideToClose(true)
+                            .title("Confirm Message")
+                            .textContent(displayMessage)
+                            .ariaLabel(displayMessage)
+                            .ok('Okay!')
+
+                    ).finally(function() {
                         webcamService.webcam.turnOff();
                         $state.go("pinLogin");
-                    }, 1500);
+                    });
                 } else {
                     //TODO failed to upload, we should request to server
 

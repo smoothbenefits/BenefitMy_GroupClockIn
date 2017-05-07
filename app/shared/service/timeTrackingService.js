@@ -27,7 +27,7 @@ timeTrackingApp.factory("timeTrackingService", ["localStorageService", "$http", 
                     "lastName" : userModel.getCurrentUserFisrtName(),
                     "firstName" : currentUser.last_name,
                     "companyDescriptor" : "stage_" + companyModel.getCompanyID(),
-                    "personDescriptor" : "stage_" + userModel.getUserID()
+                    "personDescriptor" : "stage_" + currentUser.person.id
                 },
                 "checkInAssets": {
                     "imageDetectionAsset": {
@@ -78,7 +78,7 @@ timeTrackingApp.factory("timeTrackingService", ["localStorageService", "$http", 
                     "lastName" : userModel.getCurrentUserFisrtName(),
                     "firstName" : currentUser.last_name,
                     "companyDescriptor" : "stage_" + companyModel.getCompanyID(),
-                    "personDescriptor" : "stage_" + userModel.getUserID()
+                    "personDescriptor" : "stage_" + currentUser.person.id
                 },
                 "end" : dateISO,
                 "checkOutAssets": {
