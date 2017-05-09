@@ -10,7 +10,7 @@
         webcam.patOpts = {x: 0, y: 0, w: 25, h: 25};
         webcam.channel = {
             videoHeight: 800,
-            videoWidth: 800
+            videoWidth: 600
         };
         webcam.webcamError = false;
 
