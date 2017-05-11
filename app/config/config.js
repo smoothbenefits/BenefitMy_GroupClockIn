@@ -1,2 +1,2 @@
 angular.module("timeTrackingApp.config", [])
-.constant("ENV_VARS", {"StageBASEURL":"https://benefitmy-python-staging.herokuapp.com/api/v1/","DemoTimeServiceURL":"https://demotimetracking.workbenefits.me/api/v1/","environment":"staging","IMAGE_S3_BUCKET":"benefitmy-staging-profile-assets"});
+.constant("ENV_VARS", {"StageBASEURL":"https://benefitmy-python-staging.herokuapp.com/api/v1/","DemoTimeServiceURL":"https://demotimetracking.workbenefits.me/api/v1/","environment":"staging","IMAGE_S3_BUCKET":"benefitmy-beta-uploads"});
