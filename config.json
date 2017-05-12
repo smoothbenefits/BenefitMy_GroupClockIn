@@ -1,1 +1,1 @@
-{"ENV_VARS":{"StageBASEURL":"https://benefitmy-python-staging.herokuapp.com/api/v1/","DemoTimeServiceURL":"https://demotimetracking.workbenefits.me/api/v1/","environment":"staging","IMAGE_S3_BUCKET":"benefitmy-staging-profile-assets"}}
+{"ENV_VARS":{"StageBASEURL":"https://benefitmy-python-staging.herokuapp.com/api/v1/","DemoTimeServiceURL":"https://demotimetracking.workbenefits.me/api/v1/","environment":"staging","AWSAccessKeyId":"AKIAJVLVZOIR5KDYVMTA","AWSSecretAccessKey":"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","IMAGE_S3_BUCKET":"benefitmy-beta-uploads"}}

@@ -3,9 +3,6 @@ timeTrackingApp.controller("LoginCtrl", ["$scope", "$http", "localStorageService
     $scope.formSubmit = function() {
         $scope.isLoginLoading = true;
         AuthService.login($scope.email, $scope.password).then(function() {
-            $scope.error = "";
-            $scope.email = "";
-            $scope.password = "";
             $scope.isLoginLoading = false;
             $state.go("pinLogin");
         }, function () {

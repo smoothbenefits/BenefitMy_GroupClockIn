@@ -15,7 +15,6 @@ var minifyCSS = require('gulp-minify-css');
 var clean = require('gulp-clean');
 var runSequence = require('run-sequence');
 var gutil = require('gulp-util');
-var source = require('vinyl-source-stream');
 var ngConfig = require('gulp-ng-config');
 var path = require('path');
 var fs = require('fs');
@@ -104,20 +103,15 @@ gulp.task('build', function() {
 });
 
 gulp.task('ng-config', function() {
+    gutil.log(ENV);
+    gutil.log(config[ENV]);
+
     fs.writeFileSync('./config.json',
         JSON.stringify(config[ENV]));
+
     gulp.src('./config.json')
         .pipe(
             ngConfig('timeTrackingApp.config')
         )
         .pipe(gulp.dest('./app/config/'))
-});
-
-gulp.task('browserify', ['ng-config'], function() {
-    return browserify(paths.app.scripts.app).bundle()
-        .on('success', gutil.log.bind(gutil, 'Browserify Rebundled'))
-        .on('error', gutil.log.bind(gutil, 'Browserify ' +
-            'Error: in browserify gulp task'))
-        .pipe(source('application.js'))
-        .pipe(gulp.dest('./public/js/'));
 });

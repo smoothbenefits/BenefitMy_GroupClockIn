@@ -36,7 +36,6 @@ timeTrackingApp.controller("PinLoginCtrl", ["$scope", "$state", "$location", "$m
         if(!AuthService.isLogin()) {
             $scope.isLoading = false;
             $state.go("login");
-            $state.$apply();
             return true;
         }
 

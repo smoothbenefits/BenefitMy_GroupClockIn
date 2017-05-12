@@ -98,15 +98,13 @@ timeTrackingApp.config(["$httpProvider", function ($httpProvider) {
             },
 
             responseError: function (rejection) {
-                var returnPromise = $q.defer();
-
                 if (rejection.status === 401) {
                     $rootScope.$emit("unauthorized");
                 } else if (rejection.status === 403) {
                 } else if (rejection.status === 504) {
                 }
 
-                return returnPromise.reject(reason);
+                return $q.reject(rejection);
             }
         };
     }]);

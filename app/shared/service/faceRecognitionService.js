@@ -37,7 +37,8 @@ timeTrackingApp
 
                 bucket.upload(params, function(err, data) {
                     if(err) {
-
+                        defer.reject(err);
+                        console.log(err);
                     } else {
                         defer.resolve(data);
                     }
@@ -63,6 +64,8 @@ timeTrackingApp
                     requestData.person = requestData.person.id;
                     requestData.company = companyModel.getCompanyID();
 
+                    timeTrackingService.punchTime(data);
+
                     $http({
                         url: ENV_VARS.StageBASEURL +"employee_profile/" + userModel.getUserID(),
                         method: "PUT",
@@ -73,8 +76,6 @@ timeTrackingApp
                     }).then(function(response){
                         console.log(response);
                         userModel.setCurrentUser(response.data);
-
-                        timeTrackingService.clockIn(photoUrl);
                         defer.resolve(response);
                     },function(error){
                         defer.reject(error);

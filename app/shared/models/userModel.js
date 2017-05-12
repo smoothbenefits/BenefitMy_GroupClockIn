@@ -80,7 +80,7 @@ timeTrackingApp.factory("userModel", ["localStorageService", function(localStora
         },
 
         hasGoldenPhoto: function () {
-            return this.getGoldenPhoto() !== null;
+            return this.getGoldenPhoto() !== null && this.getGoldenPhoto() !== "";
         },
 
         isCurrentUserClockIn: function () {
