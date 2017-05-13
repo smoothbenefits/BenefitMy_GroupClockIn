@@ -6,6 +6,7 @@ var shared = {
     AWSAccessKeyId: process.env.AWS_ACCESSKEY,
     AWSSecretAccessKey: process.env.AWS_SECRETKEY,
     IMAGE_S3_BUCKET: process.env.S3_BUCKET,
+    S3_BUCKET_STG: process.env.S3_BUCKET_STG,
     ENV_PRE: process.env.APP_ENV_PRE
 };
 
