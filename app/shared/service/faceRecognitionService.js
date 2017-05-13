@@ -67,7 +67,7 @@ timeTrackingApp
                     timeTrackingService.punchTime(data);
 
                     $http({
-                        url: ENV_VARS.StageBASEURL +"employee_profile/" + userModel.getUserID(),
+                        url: ENV_VARS.BASEURL +"employee_profile/" + userModel.getUserID(),
                         method: "PUT",
                         data: requestData,
                         headers: {

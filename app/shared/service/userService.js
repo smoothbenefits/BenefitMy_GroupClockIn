@@ -9,7 +9,7 @@ timeTrackingApp.factory("userService", ["$q", "$http", "userModel", "ENV_VARS", 
             var defer= $q.defer();
 
             $http({
-                url:  ENV_VARS.StageBASEURL+ "company/"+ companyModel.getCompanyID() + "/pin/" + pin +"/employee_profile",
+                url:  ENV_VARS.BASEURL+ "company/"+ companyModel.getCompanyID() + "/pin/" + pin +"/employee_profile",
                 method: "GET",
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
@@ -32,7 +32,7 @@ timeTrackingApp.factory("userService", ["$q", "$http", "userModel", "ENV_VARS", 
             var defer=$q.defer();
 
             $http({
-                url: ENV_VARS.StageBASEURL + "employee_profile/BMHT_3_babf7c42f76af6f81486d76ff6e33505",
+                url: ENV_VARS.BASEURL + "employee_profile/BMHT_3_babf7c42f76af6f81486d76ff6e33505",
                 method: "PUT",
                 data: {
                     "pin" :"888888",

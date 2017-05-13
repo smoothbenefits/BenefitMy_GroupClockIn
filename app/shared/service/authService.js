@@ -38,7 +38,7 @@ timeTrackingApp.factory("AuthService", ["localStorageService", "$http", "$q", "E
             var requestData = serializeData({"email": username, "password":password});
 
             $http({
-                url: ENV_VARS.StageBASEURL + "user/auth/",
+                url: ENV_VARS.BASEURL + "user/auth/",
                 method: "POST",
                 data:requestData,
                 headers: {

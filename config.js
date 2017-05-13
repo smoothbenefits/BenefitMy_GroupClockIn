@@ -1,6 +1,6 @@
 // Shared env vars in all environments
 var shared = {
-    StageBASEURL: process.env.STAGING_BASE_URL,
+    BASEURL: process.env.BASE_URL,
     DemoTimeServiceURL: process.env.TIME_SERVICE_URL,
     environment: process.env.APP_ENV,
     AWSAccessKeyId: process.env.AWS_ACCESSKEY,
