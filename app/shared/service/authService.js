@@ -42,7 +42,7 @@ timeTrackingApp.factory("AuthService", ["localStorageService", "$http", "$q", "E
                 method: "POST",
                 data:requestData,
                 headers: {
-                    "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+                    "Content-Type": "application/json;charset=UTF-8"
                 }
             }).then(function(response){
                 console.log(response);
