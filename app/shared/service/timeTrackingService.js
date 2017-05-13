@@ -26,8 +26,8 @@ timeTrackingApp.factory("timeTrackingService", ["localStorageService", "$http", 
                     "email" :  userModel.getUserEmail(),
                     "lastName" : userModel.getCurrentUserFisrtName(),
                     "firstName" : currentUser.last_name,
-                    "companyDescriptor" : "stage_" + companyModel.getCompanyID(),
-                    "personDescriptor" : "stage_" + currentUser.person.id
+                    "companyDescriptor" : ENV_VARS.ENV_PRE + companyModel.getCompanyID(),
+                    "personDescriptor" : ENV_VARS.ENV_PRE + currentUser.person.id
                 },
                 "checkInAssets": {
                     "imageDetectionAsset": {
@@ -77,14 +77,14 @@ timeTrackingApp.factory("timeTrackingService", ["localStorageService", "$http", 
                     "email" :  userModel.getUserEmail(),
                     "lastName" : userModel.getCurrentUserFisrtName(),
                     "firstName" : currentUser.last_name,
-                    "companyDescriptor" : "stage_" + companyModel.getCompanyID(),
-                    "personDescriptor" : "stage_" + currentUser.person.id
+                    "companyDescriptor" : ENV_VARS.ENV_PRE + companyModel.getCompanyID(),
+                    "personDescriptor" : ENV_VARS.ENV_PRE + currentUser.person.id
                 },
                 "end" : dateISO,
                 "checkOutAssets": {
                     "imageDetectionAsset": {
                         "referenceImageAsset": {
-                            "url": "benefitmy-staging-profile-assets",
+                            "url": userModel.getGoldenPhoto(),
                             "bucketName": ENV_VARS.IMAGE_S3_BUCKET
                         },
                         "realTimeImageAsset": {
@@ -124,7 +124,7 @@ timeTrackingApp.factory("timeTrackingService", ["localStorageService", "$http", 
         getUserLatestTimeCardStatus: function() {
             var currentUser = userModel.getCurrentUser();
             $http({
-                url: ENV_VARS.DemoTimeServiceURL+ "employee/" + "stage_"+currentUser.person.id + "/time_punch_cards?inprogress=true",
+                url: ENV_VARS.DemoTimeServiceURL+ "employee/" + ENV_VARS.ENV_PRE +currentUser.person.id + "/time_punch_cards?inprogress=true",
                 method: "GET"
             }).then(function(response){
                 localStorageService.set("lastStatus", response.data);
