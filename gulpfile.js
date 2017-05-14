@@ -21,6 +21,9 @@ var fs = require('fs');
 var config = require('./config.js');
 var ngAnnotate = require('gulp-ng-annotate');
 
+var rev = require('gulp-rev');
+var revCollector = require('gulp-rev-collector');
+
 // tasks
 gulp.task('lint', function() {
   gulp.src('./app/**/*.js')
@@ -36,15 +39,18 @@ gulp.task('minify-css', function() {
   var opts = {comments:true,spare:true};
   gulp.src('./assets/sass/**/*.css')
     .pipe(minifyCSS(opts))
-    .pipe(gulp.dest('./assets/sass/'))
+      .pipe(rev())
+      .pipe(gulp.dest('./assets/sass/'))
+      .pipe(rev.manifest())
+    .pipe(gulp.dest('./rev/assets/sass/'))
 });
 gulp.task('minify-js', function() {
     gulp.src('./app/**/*.js')
-        .pipe(uglify({
-            // inSourceMap:
-            // outSourceMap: "app.js.map"
-        }))
+        .pipe(uglify())
+        .pipe(rev())
         .pipe(gulp.dest('./dist/app/'))
+        .pipe(rev.manifest())
+        .pipe(gulp.dest('./rev/app/'));
 });
 gulp.task('add-annotation', function () {
     return gulp.src('./app/**/*.js')
@@ -60,8 +66,9 @@ gulp.task('copy-files', function () {
   gulp.src('./app/**/*.html')
     .pipe(gulp.dest('dist/app/'));
 });
-gulp.task('copy-html-file', function () {
-    gulp.src('./*.html')
+gulp.task('copy-html-file', ['minify-css'], function () {
+    gulp.src(['rev/**/*.json', './*.html'])
+        .pipe(revCollector())
         .pipe(gulp.dest('dist/'));
 });
 gulp.task('copy-assets', function () {
@@ -98,7 +105,7 @@ gulp.task('default', ['lint', 'server', 'watch']);
 gulp.task('build', function() {
   runSequence(
     //['clean'],
-    ['lint', 'minify-css', 'add-annotation', 'minify-js', 'copy-files', 'copy-html-file', 'copy-assets', 'copy-bower-components']
+    ['lint', 'minify-css', 'add-annotation', 'minify-js', 'copy-files', 'copy-html-file', 'copy-assets']
   );
 });
 

@@ -1,1 +1,73 @@
-timeTrackingApp.factory("AuthService",["localStorageService","$http","$q","ENV_VARS","companyModel",function(e,n,o,t,r){function a(e){if(!angular.isObject(e))return null===e?"":e.toString();var n=[];for(var o in e)if(e.hasOwnProperty(o)){var t=e[o];n.push(encodeURIComponent(o)+"="+encodeURIComponent(null===t?"":t))}return n.join("&").replace(/%20/g,"+")}return{login:function(i,s){var l=o.defer();e.set("username",i),e.set("password",s);var u=a({email:i,password:s});return n({url:t.BASEURL+"user/auth/",method:"POST",data:u,headers:{"Content-Type":"application/json;charset=UTF-8"}}).then(function(n){console.log(n),e.set("isLogin",!0),r.setCompanyProfile(n.data),l.resolve(n)},function(n){l.reject(n),e.set("isLogin",!1),console.log(n)}),l.promise},reAuth:function(){var n=e.get("username"),o=e.get("password");return console.log(n+o),this.login(n,o)},isLogin:function(){var n=e.get("isLogin"),o=r.getCompanyID();return!(null===n||!1===n||null===o)}}}]);
+//ng-annotate
+timeTrackingApp.factory("AuthService", ["localStorageService", "$http", "$q", "ENV_VARS", "companyModel", function(localStorageService, $http, $q, ENV_VARS, companyModel) {
+    var currentUser;
+
+    function serializeData( data ) {
+        // If this is not an object, defer to native stringification.
+        if ( ! angular.isObject( data ) ) {
+            return( ( data === null ) ? "" : data.toString() );
+        }
+
+        var buffer = [];
+
+        // Serialize each key in the object.
+        for ( var name in data ) {
+            if ( ! data.hasOwnProperty( name ) ) {
+                continue;
+            }
+
+            var value = data[ name ];
+
+            buffer.push(
+                encodeURIComponent( name ) + "=" + encodeURIComponent( ( value === null ) ? "" : value )
+            );
+        }
+
+        // Serialize the buffer and clean it up for transportation.
+        var source = buffer.join( "&" ).replace( /%20/g, "+" );
+        return( source );
+    }
+
+    return {
+        login : function(username, password) {
+            var defer= $q.defer();
+
+            localStorageService.set("username", username);
+            localStorageService.set("password", password);
+
+            var requestData = serializeData({"email": username, "password":password});
+
+            $http({
+                url: ENV_VARS.BASEURL + "user/auth/",
+                method: "POST",
+                data:requestData,
+                headers: {
+                    "Content-Type": "application/json;charset=UTF-8"
+                }
+            }).then(function(response){
+                console.log(response);
+                localStorageService.set("isLogin", true);
+                companyModel.setCompanyProfile(response.data);
+                defer.resolve(response);
+            },function(error){
+                defer.reject(error);
+                localStorageService.set("isLogin", false);
+                console.log(error);
+            });
+
+            return defer.promise;
+        },
+        reAuth : function() {
+            var username = localStorageService.get("username");
+            var password = localStorageService.get("password");
+            console.log(username+password);
+            return this.login(username, password);
+        },
+        isLogin : function () {
+            var isLogin = localStorageService.get("isLogin");
+            var companyID = companyModel.getCompanyID();
+
+            return !((isLogin === null || isLogin === false) || (companyID === null));
+        }
+    };
+}]);
