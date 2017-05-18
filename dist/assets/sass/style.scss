@@ -39,7 +39,7 @@ body.correct {
 
 #pin {
   background: #FFFFFF;
-  width: 24em;
+  width: 40em;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -72,13 +72,12 @@ body.correct {
   padding: 1em; }
 
 .dot {
-  margin: 0.5em auto;
   position: relative;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 0.8em;
   width: 0.8em;
   height: 0.8em;
-  font-size: 40px;
+  font-size: 80px;
   color: #2aabd2;
   letter-spacing: 8px;
   -webkit-transform: scale3d(0.7, 0.7, 0.7);
@@ -99,7 +98,7 @@ body.correct {
   animation: correct .9s ease; }
 
 .hint {
-  font-size: 1em;
+  font-size: 1.5em;
   color: #2aabd2;
   margin: .1em 0; }
 
@@ -318,7 +317,7 @@ md-toast.md-error-toast-theme .md-toast-content {
   background-color: #475264; }
 
 .span4 {
-  width: 80px;
+  width: 150px;
   float: left;
   margin: 0 8px 10px 8px; }
 
@@ -340,15 +339,15 @@ md-toast.md-error-toast-theme .md-toast-content {
   -webkit-border-radius: 999px;
   border-radius: 999px;
   -moz-border-radius: 999px;
-  height: 80px;
+  height: 150px;
   background-color: #fff;
   color: #333;
   cursor: pointer;  }
 
 .digit {
-  font-size: 30px;
+  font-size: 60px;
   text-align: center;
-  margin-top: 25px;
+  margin-top: 55px;
   font-family: 'Lato' , sans-serif;
   line-height: 30px;
   color: #9EDCF4; }
