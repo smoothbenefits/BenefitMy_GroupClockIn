@@ -85,7 +85,7 @@ timeTrackingApp.factory("userModel", ["localStorageService", function(localStora
 
         isCurrentUserClockIn: function () {
             var userLastStatus = localStorageService.get("lastStatus");
-            return (userLastStatus === null || userLastStatus.length > 0);
+            return (userLastStatus !== null && userLastStatus.length > 0);
         },
 
         getCurrentUser: function () {

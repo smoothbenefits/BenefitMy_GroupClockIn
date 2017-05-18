@@ -5,7 +5,7 @@
   "components/webcam/webcamCtrl.js": "components/webcam/webcamCtrl.js?v=351ca4d3c0",
   "config/config.js": "config/config.js?v=ceb081d710",
   "shared/models/companyModel.js": "shared/models/companyModel.js?v=485bfba171",
-  "shared/models/userModel.js": "shared/models/userModel.js?v=f51105c314",
+  "shared/models/userModel.js": "shared/models/userModel.js?v=3a09fa3912",
   "shared/service/analyticsService.js": "shared/service/analyticsService.js?v=1b5bb43fe6",
   "shared/service/authService.js": "shared/service/authService.js?v=5ef17730ff",
   "shared/service/content-mock.js": "shared/service/content-mock.js?v=d4a71ee77c",
