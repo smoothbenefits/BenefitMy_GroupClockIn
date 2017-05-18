@@ -60,9 +60,12 @@ timeTrackingApp
 
                     //modify request data
                     requestData.photo_url = photoUrl;
-                    requestData.manager = requestData.manager.id;
                     requestData.person = requestData.person.id;
                     requestData.company = companyModel.getCompanyID();
+                    if(requestData.manager !== null && requestData.manager.hasOwnProperty("id"))
+                        requestData.manager = requestData.manager.id;
+                    else
+                        requestData.manager = null;
 
                     timeTrackingService.punchTime(data);
 
