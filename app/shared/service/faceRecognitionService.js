@@ -51,9 +51,9 @@ timeTrackingApp
              * upload golden image for the first time
              */
             uploadGoldenPicture: function (imageData) {
-                var promise = this.uploadImage(imageData).then(function(data){
-                    var defer=$q.defer();
+                var defer=$q.defer();
 
+                var promise = this.uploadImage(imageData).then(function(data){
                     var photoUrl = data.Location;
 
                     var requestData = userModel.getUserProfile();
@@ -84,9 +84,13 @@ timeTrackingApp
                         defer.reject(error);
                         console.log(error);
                     });
-
-                    return defer.promise;
+                }, function (error) {
+                    //error to upload S3 image
+                    defer.reject(error);
+                    console.log(error);
                 });
+
+                return defer.promise;
             },
 
             /*
@@ -116,7 +120,10 @@ timeTrackingApp
 
                     rekognition.compareFaces(params, function (err, data) {
                         if (err) {
-                            defer.reject(err);
+                            defer.resolve({
+                                url:photoUrl,
+                                confidence: null
+                            });
                         }
                         else {
                             defer.resolve({
