@@ -27,7 +27,7 @@ timeTrackingApp.factory("timeTrackingService", ["localStorageService", "$http", 
                     "lastName" : userModel.getCurrentUserFisrtName(),
                     "firstName" : currentUser.last_name,
                     "companyDescriptor" : ENV_VARS.ENV_PRE + companyModel.getCompanyID(),
-                    "personDescriptor" : ENV_VARS.ENV_PRE + currentUser.person.user.id
+                    "personDescriptor" : ENV_VARS.ENV_PRE + currentUser.person.user
                 },
                 "checkInAssets": {
                     "imageDetectionAsset": {
@@ -78,7 +78,7 @@ timeTrackingApp.factory("timeTrackingService", ["localStorageService", "$http", 
                     "lastName" : userModel.getCurrentUserFisrtName(),
                     "firstName" : currentUser.last_name,
                     "companyDescriptor" : ENV_VARS.ENV_PRE + companyModel.getCompanyID(),
-                    "personDescriptor" : ENV_VARS.ENV_PRE + currentUser.person.user.id
+                    "personDescriptor" : ENV_VARS.ENV_PRE + currentUser.person.user
                 },
                 "end" : dateISO,
                 "checkOutAssets": {
@@ -124,7 +124,7 @@ timeTrackingApp.factory("timeTrackingService", ["localStorageService", "$http", 
         getUserLatestTimeCardStatus: function() {
             var currentUser = userModel.getCurrentUser();
             $http({
-                url: ENV_VARS.DemoTimeServiceURL+ "employee/" + ENV_VARS.ENV_PRE +currentUser.person.id + "/time_punch_cards?inprogress=true",
+                url: ENV_VARS.DemoTimeServiceURL+ "employee/" + ENV_VARS.ENV_PRE +currentUser.person.user + "/time_punch_cards?inprogress=true",
                 method: "GET"
             }).then(function(response){
                 localStorageService.set("lastStatus", response.data);
