@@ -69,6 +69,8 @@
                             .ok('Okay!')
 
                     ).finally(function() {
+                        //clear user last status
+                        localStorageService.set("lastStatus", null);
                         webcamService.webcam.turnOff();
                         $state.go("pinLogin");
                     });

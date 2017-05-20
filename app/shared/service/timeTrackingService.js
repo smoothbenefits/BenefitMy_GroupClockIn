@@ -109,7 +109,6 @@ timeTrackingApp.factory("timeTrackingService", ["localStorageService", "$http", 
             }).then(function(response){
                 currentUser.clockIn = null;
                 currentUser.clockInId = null;
-                localStorageService.set("lastStatus", null);
                 userModel.updateUser(currentUser);
                 defer.resolve(response);
             },function(error){
