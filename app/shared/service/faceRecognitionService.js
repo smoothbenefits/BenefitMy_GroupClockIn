@@ -103,7 +103,7 @@ timeTrackingApp
 
                     var photoUrl = data.Location;
                     var params = {
-                        SimilarityThreshold: 1,
+                        SimilarityThreshold: 0,
                         SourceImage: {
                             S3Object: {
                                 Bucket: ENV_VARS.IMAGE_S3_BUCKET,
