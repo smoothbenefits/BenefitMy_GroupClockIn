@@ -72,7 +72,7 @@
                         webcamService.webcam.turnOff();
                         $state.go("pinLogin");
                     });
-                } else {
+                } else if (response === false){
                     //something bad happens
                     var errorMessage = "Unable to upload photo, please contact HR!";
 
@@ -101,7 +101,7 @@
                 };
 
                 $scope.answer = function(response) {
-                    $mdDialog.hide(response);
+                    $mdDialog.cancel();
                     // ga("send", {
                     //     hitType: "event",
                     //     eventCategory: "WebCam",

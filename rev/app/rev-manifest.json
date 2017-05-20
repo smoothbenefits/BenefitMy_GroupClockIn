@@ -2,7 +2,7 @@
   "app.js": "app.js?v=8ca742ca7d",
   "components/login/loginCtrl.js": "components/login/loginCtrl.js?v=8016344ed9",
   "components/pin/pinLoginCtrl.js": "components/pin/pinLoginCtrl.js?v=d0be1d1c8a",
-  "components/webcam/webcamCtrl.js": "components/webcam/webcamCtrl.js?v=3cb54f8907",
+  "components/webcam/webcamCtrl.js": "components/webcam/webcamCtrl.js?v=9c3eb29fe6",
   "config/config.js": "config/config.js?v=ceb081d710",
   "shared/models/companyModel.js": "shared/models/companyModel.js?v=485bfba171",
   "shared/models/userModel.js": "shared/models/userModel.js?v=3a09fa3912",
