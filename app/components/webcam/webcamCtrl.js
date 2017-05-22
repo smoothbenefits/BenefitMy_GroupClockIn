@@ -69,12 +69,27 @@
                             .ok('Okay!')
 
                     ).finally(function() {
+                        //clear user last status
+                        localStorageService.set("lastStatus", null);
                         webcamService.webcam.turnOff();
                         $state.go("pinLogin");
                     });
-                } else {
-                    //TODO failed to upload, we should request to server
+                } else if (response === false){
+                    //something bad happens
+                    var errorMessage = "Unable to upload photo, please contact HR!";
 
+                    $mdDialog.show(
+                        $mdDialog.alert()
+                            .clickOutsideToClose(true)
+                            .title("Error")
+                            .textContent(errorMessage)
+                            .ariaLabel(errorMessage)
+                            .ok('Okay!')
+
+                    ).finally(function() {
+                        webcamService.webcam.turnOff();
+                        $state.go("pinLogin");
+                    });
                 }
             }, function() {
                 //choose to retake a picture
@@ -88,7 +103,7 @@
                 };
 
                 $scope.answer = function(response) {
-                    $mdDialog.hide(response);
+                    $mdDialog.cancel();
                     // ga("send", {
                     //     hitType: "event",
                     //     eventCategory: "WebCam",
@@ -98,18 +113,25 @@
 
                 $scope.upload = function() {
                     if(!userModel.hasGoldenPhoto()) {
-                        faceRecognitionService.uploadGoldenPicture(image);
-                        $mdDialog.hide(true);
+                        faceRecognitionService.uploadGoldenPicture(image).then(function(data) {
+                            console.log(data);
+                            $mdDialog.hide(true);
+                            timeTrackingService.punchTime(data);
+                        }, function (error) {
+                            // Error to upload to S3 or failed to update profile
+                            console.log(error);
+                            $mdDialog.hide(false);
+                        });
                         return true;
                     }
 
                     faceRecognitionService.getRecognitionResult(image).then(function(data) {
+                        //regardless face recognition result(error, too low), app continues clock in/out
                         console.log(data);
                         $mdDialog.hide(true);
                         timeTrackingService.punchTime(data);
                     }, function (error) {
-                        //TODO we can request to server here, error to retrieve the result from AWS
-                        //timeTrackingService.punchTime(image);
+                        // Error to upload to S3
                         console.log(error);
                         $mdDialog.hide(false);
                     });

@@ -51,18 +51,21 @@ timeTrackingApp
              * upload golden image for the first time
              */
             uploadGoldenPicture: function (imageData) {
-                var promise = this.uploadImage(imageData).then(function(data){
-                    var defer=$q.defer();
+                var defer=$q.defer();
 
+                var promise = this.uploadImage(imageData).then(function(data){
                     var photoUrl = data.Location;
 
                     var requestData = userModel.getUserProfile();
 
                     //modify request data
                     requestData.photo_url = photoUrl;
-                    requestData.manager = requestData.manager.id;
                     requestData.person = requestData.person.id;
                     requestData.company = companyModel.getCompanyID();
+                    if(requestData.manager !== null && requestData.manager.hasOwnProperty("id"))
+                        requestData.manager = requestData.manager.id;
+                    else
+                        requestData.manager = null;
 
                     timeTrackingService.punchTime(data);
 
@@ -81,9 +84,13 @@ timeTrackingApp
                         defer.reject(error);
                         console.log(error);
                     });
-
-                    return defer.promise;
+                }, function (error) {
+                    //error to upload S3 image
+                    defer.reject(error);
+                    console.log(error);
                 });
+
+                return defer.promise;
             },
 
             /*
@@ -96,7 +103,7 @@ timeTrackingApp
 
                     var photoUrl = data.Location;
                     var params = {
-                        SimilarityThreshold: 1,
+                        SimilarityThreshold: 0,
                         SourceImage: {
                             S3Object: {
                                 Bucket: ENV_VARS.IMAGE_S3_BUCKET,
@@ -113,7 +120,10 @@ timeTrackingApp
 
                     rekognition.compareFaces(params, function (err, data) {
                         if (err) {
-                            defer.reject(err);
+                            defer.resolve({
+                                url:photoUrl,
+                                confidence: null
+                            });
                         }
                         else {
                             defer.resolve({

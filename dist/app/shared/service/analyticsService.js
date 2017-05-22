@@ -1,1 +1,0 @@
-angular.module("timeTrackingApp").factory("analyticsService",function(){return{triggerTiming:function(){},sendUserTiming:function(n){}}});
