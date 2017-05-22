@@ -78,7 +78,6 @@ timeTrackingApp
                         }
                     }).then(function(response){
                         console.log(response);
-                        userModel.setCurrentUser(response.data);
                         defer.resolve(response);
                     },function(error){
                         defer.reject(error);
