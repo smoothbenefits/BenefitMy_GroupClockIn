@@ -20,7 +20,7 @@
             <md-button ng-click="answer('false')" aria-label="Cancel">
                 Retake
             </md-button>
-            <md-button class="md-raised md-primary" ng-click="uploading=true; upload()" aria-label="Use">
+            <md-button class="md-raised md-primary" ng-click="uploading=true; upload()" ng-disabled="uploading" aria-label="Use">
                 Use
             </md-button>
         </md-dialog-actions>
