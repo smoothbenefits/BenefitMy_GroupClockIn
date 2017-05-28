@@ -36,6 +36,7 @@
     "run-sequence": "^1.2.2"
   },
   "scripts": {
-    "start": "node web.js"
+    "start": "node web.js",
+    "build": "npm install && bower install && gulp build"
   }
 }
