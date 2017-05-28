@@ -44,6 +44,7 @@ gulp.task('minify-css', function() {
       .pipe(rev.manifest())
     .pipe(gulp.dest('./rev/assets/sass/'))
 });
+
 gulp.task('minify-js', function() {
     gulp.src('./app/**/*.js')
         .pipe(uglify())
@@ -52,42 +53,42 @@ gulp.task('minify-js', function() {
         .pipe(rev.manifest())
         .pipe(gulp.dest('./rev/app/'));
 });
+
 gulp.task('add-annotation', function () {
     return gulp.src('./app/**/*.js')
         .pipe(ngAnnotate())
         .pipe(gulp.dest('./app/'));
 });
 
-gulp.task('copy-bower-components', function () {
-  gulp.src('./bower_components/**')
-    .pipe(gulp.dest('dist/bower_components'));
-});
 gulp.task('copy-files', function () {
   gulp.src('./app/**/*.html')
     .pipe(gulp.dest('dist/app/'));
 });
+
 gulp.task('copy-html-file', ['minify-css'], function () {
     gulp.src(['rev/**/*.json', './*.html'])
         .pipe(revCollector())
         .pipe(gulp.dest('dist/'));
 });
+
 gulp.task('copy-assets', function () {
     gulp.src('./assets/**/*')
         .pipe(gulp.dest('dist/assets/'));
 });
 
-gulp.task('server', function() {
+gulp.task('serve-dev', function() {
   connect.server({
     root: './',
     port: 8001,
     livereload: true
   });
 });
-gulp.task('connectDist', function () {
+
+gulp.task('serve', function () {
   connect.server({
     root: './dist/',
     port: 9997,
-    livereload: true 
+    livereload: true
   });
 });
 
@@ -100,7 +101,7 @@ gulp.task('watch', function() {
   gulp.watch(['./**/*.html'], ['html']);
 });
 
-gulp.task('default', ['lint', 'server', 'watch']);
+gulp.task('default', ['lint', 'serve-dev', 'watch']);
 
 gulp.task('build', function() {
   runSequence(

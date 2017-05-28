@@ -1,6 +1,9 @@
-var timeTrackingApp = window.angular.module("timeTrackingApp", ["LocalStorageModule", "webcam", "ngAnimate", "ui.router", "ngMaterial", "anim-in-out", "timeTrackingApp.config"]);
+var timeTrackingApp = window.angular.module("timeTrackingApp",
+  ["LocalStorageModule", "webcam", "ngAnimate", "ui.router", "ngMaterial",
+   "anim-in-out", "timeTrackingApp.config"]);
 
-timeTrackingApp.config(["$stateProvider", "$urlRouterProvider", function ($stateProvider, $urlRouterProvider) {
+timeTrackingApp.config(["$stateProvider", "$urlRouterProvider",
+function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.when("", "/pinLogin");
     $urlRouterProvider.when("/", "/pinLogin");
     $urlRouterProvider.otherwise("/pinLogin");
