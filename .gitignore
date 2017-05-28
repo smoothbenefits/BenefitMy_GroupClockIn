@@ -1,5 +1,13 @@
 .idea
 .env
+
+# Ignore dependencies
 node_modules
 bower_components
+
+# Ignore distribution files
 dist
+
+# Ignore compiled style sheets
+.sass-cache
+assets/sass/style-*.*
