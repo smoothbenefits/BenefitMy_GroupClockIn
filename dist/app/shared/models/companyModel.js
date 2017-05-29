@@ -1,1 +1,0 @@
-timeTrackingApp.factory("companyModel",["localStorageService",function(n){return{setCompanyProfile:function(e){n.set("companyProfile",e)},getCompanyID:function(){var e=n.get("companyProfile");if(null===e)return!1;var o=e.company_info.company_id_env_encode;return o.substr(o.indexOf("_")+1,o.length)}}}]);
