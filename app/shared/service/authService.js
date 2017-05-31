@@ -1,6 +1,9 @@
 //ng-annotate
-timeTrackingApp.factory("AuthService", ["localStorageService", "$http", "$q", "ENV_VARS", "companyModel", function(localStorageService, $http, $q, ENV_VARS, companyModel) {
+timeTrackingApp.factory("AuthService",
+["localStorageService", "$http", "$q", "envService", "companyModel",
+function(localStorageService, $http, $q, envService, companyModel) {
     var currentUser;
+    var mainAppBaseUrl = envService.read('WorkBenefitsMeUrl');
 
     return {
         login : function(username, password) {
@@ -12,7 +15,7 @@ timeTrackingApp.factory("AuthService", ["localStorageService", "$http", "$q", "E
             var requestData = {"email": username, "password":password};
 
             $http({
-                url: ENV_VARS.BASEURL + "user/auth/",
+                url: mainAppBaseUrl + "user/auth/",
                 method: "POST",
                 data:requestData,
                 headers: {

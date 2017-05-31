@@ -15,10 +15,8 @@ var minifyCSS = require('gulp-minify-css');
 var clean = require('gulp-clean');
 var runSequence = require('run-sequence');
 var gutil = require('gulp-util');
-var ngConfig = require('gulp-ng-config');
 var path = require('path');
 var fs = require('fs');
-var config = require('./config.js');
 var ngAnnotate = require('gulp-ng-annotate');
 
 var rev = require('gulp-rev');
@@ -108,18 +106,4 @@ gulp.task('build', function() {
     //['clean'],
     ['lint', 'minify-css', 'add-annotation', 'minify-js', 'copy-files', 'copy-html-file', 'copy-assets']
   );
-});
-
-gulp.task('ng-config', function() {
-    gutil.log(ENV);
-    gutil.log(config[ENV]);
-
-    fs.writeFileSync('./config.json',
-        JSON.stringify(config[ENV]));
-
-    gulp.src('./config.json')
-        .pipe(
-            ngConfig('timeTrackingApp.config')
-        )
-        .pipe(gulp.dest('./app/config/'))
 });

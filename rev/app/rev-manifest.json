@@ -1,16 +1,15 @@
 {
-  "app.js": "app-8ca742ca7d.js",
+  "app.js": "app-92c9f7e8c9.js",
   "components/login/loginCtrl.js": "components/login/loginCtrl-8016344ed9.js",
   "components/pin/pinLoginCtrl.js": "components/pin/pinLoginCtrl-d0be1d1c8a.js",
   "components/webcam/webcamCtrl.js": "components/webcam/webcamCtrl-0caac20b53.js",
-  "config/config.js": "config/config-aaabf265ea.js",
   "shared/models/companyModel.js": "shared/models/companyModel-485bfba171.js",
   "shared/models/userModel.js": "shared/models/userModel-3a09fa3912.js",
   "shared/service/analyticsService.js": "shared/service/analyticsService-d41d8cd98f.js",
-  "shared/service/authService.js": "shared/service/authService-5ef17730ff.js",
+  "shared/service/authService.js": "shared/service/authService-f5e26f4f4f.js",
   "shared/service/content-mock.js": "shared/service/content-mock-d4a71ee77c.js",
-  "shared/service/faceRecognitionService.js": "shared/service/faceRecognitionService-2139b783a8.js",
-  "shared/service/timeTrackingService.js": "shared/service/timeTrackingService-03fedfbed9.js",
+  "shared/service/faceRecognitionService.js": "shared/service/faceRecognitionService-2f3987284e.js",
+  "shared/service/timeTrackingService.js": "shared/service/timeTrackingService-89f041b8f8.js",
   "shared/service/userService.js": "shared/service/userService-68c1ae6c01.js",
   "shared/service/webcamService.js": "shared/service/webcamService-d935d4ce75.js"
 }

@@ -1,6 +1,6 @@
 var timeTrackingApp = window.angular.module("timeTrackingApp",
   ["LocalStorageModule", "webcam", "ngAnimate", "ui.router", "ngMaterial",
-   "anim-in-out", "timeTrackingApp.config"]);
+   "anim-in-out", "environment"]);
 
 timeTrackingApp.config(["$stateProvider", "$urlRouterProvider",
 function ($stateProvider, $urlRouterProvider) {
@@ -111,7 +111,58 @@ timeTrackingApp.config(["$httpProvider", function ($httpProvider) {
             }
         };
     }]);
+}]);
 
+timeTrackingApp.config(['envServiceProvider', function (envServiceProvider) {
+  envServiceProvider.config({
+    domains: {
+      localhost: ['localhost'],
+      stage: ['grouptimetrackingstg.herokuapp.com'],
+      demo: ['grouptimetrackingdemo.herokuapp.com'],
+      production: ['grouptimetracking.herokuapp.com', 'grouptimetracking.workbenefits.me']
+    },
+    vars: {
+      localhost: {
+        "WorkBenefitsMeUrl": "https://staging.workbenefits.me/api/v1/",
+        "TimeTrackingServiceUrl": "http://stage.timetracking.workbenefits.me/",
+        "environment": "stage",
+        "AWSAccessKeyId": "AKIAJVLVZOIR5KDYVMTA",
+        "AWSSecretAccessKey": "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",
+        "ImageS3Bucket": "benefitmy-staging-profile-assets",
+        "EnvironmentPrefix": "local_"
+      },
+      stage: {
+        "WorkBenefitsMeUrl": "https://staging.workbenefits.me/api/v1/",
+        "TimeTrackingServiceUrl": "http://stage.timetracking.workbenefits.me/",
+        "environment": "stage",
+        "AWSAccessKeyId": "AKIAJVLVZOIR5KDYVMTA",
+        "AWSSecretAccessKey": "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",
+        "ImageS3Bucket": "benefitmy-staging-profile-assets",
+        "EnvironmentPrefix": "stage_"
+      },
+      demo: {
+        "WorkBenefitsMeUrl": "https://benefitmy-python-demo.herokuapp.com/api/v1/",
+        "TimeTrackingServiceUrl": "http://stage.timetracking.workbenefits.me/",
+        "environment": "staging",
+        "AWSAccessKeyId": "AKIAJVLVZOIR5KDYVMTA",
+        "AWSSecretAccessKey": "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",
+        "ImageS3Bucket": "benefitmy-staging-profile-assets",
+        "EnvironmentPrefix": "demo_"
+      },
+      production: {
+        "WorkBenefitsMeUrl": "https://app.workbenefits.me/api/v1/",
+        "TimeTrackingServiceUrl": "https://timetracking.workbenefits.me/api/v1/",
+        "environment": "production",
+        "AWSAccessKeyId": "AKIAJVLVZOIR5KDYVMTA",
+        "AWSSecretAccessKey": "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",
+        "ImageS3Bucket": "benefitmy-beta-profile-assets",
+        "EnvironmentPrefix": "production_"
+      }
+    }
+  });
+
+  // run the environment check before controllers and services are built
+  envServiceProvider.check();
 }]);
 
 timeTrackingApp.run(["$rootScope", "$state", "AuthService", function ($rootScope, $state, AuthService) {
