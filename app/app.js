@@ -123,17 +123,17 @@ timeTrackingApp.config(['envServiceProvider', function (envServiceProvider) {
     },
     vars: {
       localhost: {
-        "WorkBenefitsMeUrl": "https://staging.workbenefits.me/api/v1/",
-        "TimeTrackingServiceUrl": "http://stage.timetracking.workbenefits.me/",
+        "WorkBenefitsMeUrl": "http://staging.workbenefits.me/api/v1/",
+        "TimeTrackingServiceUrl": "http://stage.timetracking.workbenefits.me/api/v1/",
         "environment": "stage",
         "AWSAccessKeyId": "AKIAJVLVZOIR5KDYVMTA",
         "AWSSecretAccessKey": "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",
         "ImageS3Bucket": "benefitmy-staging-profile-assets",
-        "EnvironmentPrefix": "local_"
+        "EnvironmentPrefix": "localhost_"
       },
       stage: {
-        "WorkBenefitsMeUrl": "https://staging.workbenefits.me/api/v1/",
-        "TimeTrackingServiceUrl": "http://stage.timetracking.workbenefits.me/",
+        "WorkBenefitsMeUrl": "http://staging.workbenefits.me/api/v1/",
+        "TimeTrackingServiceUrl": "http://stage.timetracking.workbenefits.me/api/v1/",
         "environment": "stage",
         "AWSAccessKeyId": "AKIAJVLVZOIR5KDYVMTA",
         "AWSSecretAccessKey": "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",
@@ -141,8 +141,8 @@ timeTrackingApp.config(['envServiceProvider', function (envServiceProvider) {
         "EnvironmentPrefix": "stage_"
       },
       demo: {
-        "WorkBenefitsMeUrl": "https://benefitmy-python-demo.herokuapp.com/api/v1/",
-        "TimeTrackingServiceUrl": "http://stage.timetracking.workbenefits.me/",
+        "WorkBenefitsMeUrl": "http://benefitmy-python-demo.herokuapp.com/api/v1/",
+        "TimeTrackingServiceUrl": "http://stage.timetracking.workbenefits.me/api/v1/",
         "environment": "staging",
         "AWSAccessKeyId": "AKIAJVLVZOIR5KDYVMTA",
         "AWSSecretAccessKey": "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",
