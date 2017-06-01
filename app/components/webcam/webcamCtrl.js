@@ -117,7 +117,6 @@
                             blockUI.stop();
                             console.log(data);
                             $mdDialog.hide(true);
-                            timeTrackingService.punchTime(data);
                         }, function (error) {
                             blockUI.stop();
                             // Error to upload to S3 or failed to update profile
