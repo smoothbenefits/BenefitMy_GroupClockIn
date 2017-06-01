@@ -1,6 +1,9 @@
 .idea
 .env
 
+# Ignore rev files
+rev
+
 # Ignore dependencies
 node_modules
 bower_components
