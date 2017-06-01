@@ -60,6 +60,8 @@ gulp.task('add-annotation', function () {
 gulp.task('copy-files', function () {
   gulp.src('./app/**/*.html')
     .pipe(gulp.dest('dist/app/'));
+
+  // gulp.src('./index.html').pipe(gulp.dest('dist/'));
 });
 
 gulp.task('copy-html-file', ['minify-css'], function () {
@@ -85,7 +87,7 @@ gulp.task('serve', function () {
   connect.server({
     root: './dist/',
     port: 9997,
-    livereload: true
+    livereload: false
   });
 });
 
