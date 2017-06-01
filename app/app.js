@@ -1,6 +1,6 @@
 var timeTrackingApp = window.angular.module("timeTrackingApp",
   ["LocalStorageModule", "webcam", "ngAnimate", "ui.router", "ngMaterial",
-   "anim-in-out", "environment"]);
+   "anim-in-out", "environment", "blockUI"]);
 
 timeTrackingApp.config(["$stateProvider", "$urlRouterProvider",
 function ($stateProvider, $urlRouterProvider) {
