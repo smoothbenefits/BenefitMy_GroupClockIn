@@ -1,3 +1,6 @@
+dependencies:
+  override:
+    - npm install && npm run preflight
 deployment:
   staging:
     branch: development
