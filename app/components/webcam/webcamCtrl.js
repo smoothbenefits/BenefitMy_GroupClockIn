@@ -55,9 +55,9 @@
                 if (response === true) {
                     var displayMessage = "";
                     if (userModel.isCurrentUserClockIn()) {
-                        displayMessage = "Thank you! " + userModel.getCurrentUserFisrtName() + "，you are Clock Out!";
+                        displayMessage = "Thank you! " + userModel.getCurrentUserFisrtName() + "，you are Clocked Out!";
                     } else {
-                        displayMessage = "Thank you! " + userModel.getCurrentUserFisrtName() + ", you are Clock In!";
+                        displayMessage = "Thank you! " + userModel.getCurrentUserFisrtName() + ", you are Clocked In!";
                     }
 
                     $mdDialog.show(
