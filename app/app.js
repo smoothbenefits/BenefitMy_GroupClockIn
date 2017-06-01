@@ -123,7 +123,7 @@ timeTrackingApp.config(['envServiceProvider', function (envServiceProvider) {
     },
     vars: {
       localhost: {
-        "WorkBenefitsMeUrl": "http://staging.workbenefits.me/api/v1/",
+        "WorkBenefitsMeUrl": "https://benefitmy-python-staging.herokuapp.com/api/v1/",
         "TimeTrackingServiceUrl": "http://stage.timetracking.workbenefits.me/api/v1/",
         "environment": "stage",
         "AWSAccessKeyId": "AKIAJVLVZOIR5KDYVMTA",
