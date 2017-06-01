@@ -1,7 +1,7 @@
 {
   "name": "groupclockin",
-  "dependencies": {},
-  "devDependencies": {
+  "devDependencies": {},
+  "dependencies": {
     "angular": "^1.6.4",
     "angular-aria": "^1.6.4",
     "angular-environment": "^1.0.8",
