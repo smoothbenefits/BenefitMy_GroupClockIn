@@ -1,0 +1,13 @@
+deployment:
+  staging:
+    branch: development
+    heroku:
+      appname: grouptimetrackingstg
+  demo:
+    branch: demo
+    heroku:
+      appname: grouptimetrackingdemo
+  production:
+    branch: master
+    heroku:
+      appname: grouptimetracking
