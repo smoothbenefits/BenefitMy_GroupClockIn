@@ -14,7 +14,6 @@ var uglify = require('gulp-uglify');
 var minifyCSS = require('gulp-minify-css');
 var clean = require('gulp-clean');
 var runSequence = require('run-sequence');
-var gutil = require('gulp-util');
 var path = require('path');
 var fs = require('fs');
 var ngAnnotate = require('gulp-ng-annotate');
