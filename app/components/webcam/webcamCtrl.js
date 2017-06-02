@@ -35,9 +35,16 @@
 
             webcamService.webcam.onError();
             //TODO we should display something if failed to load
-            $mdToast.show(
-                $mdToast.simple().content("Please reboot device!").theme("error-toast").hideDelay(8000)
-            );
+            $mdDialog.show(
+                $mdDialog.alert()
+                    .clickOutsideToClose(true)
+                    .title("Error")
+                    .textContent("Enable to load camera, Please reboot device!")
+                    .ok('Okay!')
+            ).finally(function () {
+                webcamService.webcam.turnOff();
+                $state.go("pinLogin");
+            });
         };
 
         webcamService.webcam.showDialog = function (image) {
@@ -55,17 +62,15 @@
                 if (response === true) {
                     var displayMessage = "";
                     if (userModel.isCurrentUserClockIn()) {
-                        displayMessage = "Thank you! " + userModel.getCurrentUserFisrtName() + "，you are Clocked Out!";
+                        displayMessage = "Good job! " + userModel.getCurrentUserFisrtName() + "，you are Clocked Out!";
                     } else {
-                        displayMessage = "Thank you! " + userModel.getCurrentUserFisrtName() + ", you are Clocked In!";
+                        displayMessage = "Good job! " + userModel.getCurrentUserFisrtName() + ", you are Clocked In!";
                     }
 
                     $mdDialog.show(
                         $mdDialog.alert()
                             .clickOutsideToClose(true)
-                            .title("Confirm Message")
                             .textContent(displayMessage)
-                            .ariaLabel(displayMessage)
                             .ok('Okay!')
                     ).finally(function () {
                         //clear user last status
@@ -82,7 +87,6 @@
                             .clickOutsideToClose(true)
                             .title("Error")
                             .textContent(errorMessage)
-                            .ariaLabel(errorMessage)
                             .ok('Okay!')
                     ).finally(function () {
                         webcamService.webcam.turnOff();
