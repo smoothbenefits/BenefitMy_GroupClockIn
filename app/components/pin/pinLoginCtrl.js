@@ -1,5 +1,5 @@
 //ng-annotate
-timeTrackingApp.controller("PinLoginCtrl", ["$scope", "$state", "$location", "$mdToast", "userService", "userModel", "AuthService", "timeTrackingService", function($scope, $state, $location, $mdToast, userService, userModel, AuthService, timeTrackingService) {
+timeTrackingApp.controller("PinLoginCtrl", ["$scope", "$state", "$location", "$mdDialog", "userService", "userModel", "AuthService", "timeTrackingService", function($scope, $state, $location, $mdDialog, userService, userModel, AuthService, timeTrackingService) {
     var input   = "";
 
     userModel.clearCurrentUser();
@@ -45,15 +45,22 @@ timeTrackingApp.controller("PinLoginCtrl", ["$scope", "$state", "$location", "$m
             setTimeout(function() {
                 $state.go("capture");
             }, 1500);
-        }, function () {
+        }, function (error) {
             $scope.isLoading = false;
 
-            $mdToast.show(
-                $mdToast.simple().content("Invalid Pin!").theme("error-toast")
-            );
+            console.log(error);
 
-            input = "";
-            $scope.pin_input = input;
+            //TODO we can show different error depending on response code
+            $mdDialog.show(
+                $mdDialog.alert()
+                    .clickOutsideToClose(true)
+                    .title("Error Message")
+                    .textContent("Invalid Pin! Error Code:" + error.status)
+                    .ok('Okay!')
+            ).finally(function () {
+                input = "";
+                $scope.pin_input = input;
+            });
         });
     };
 
