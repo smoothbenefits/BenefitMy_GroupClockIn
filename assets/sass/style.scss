@@ -258,6 +258,12 @@ body.correct {
 .capture-button {
   margin: 120px; }
 
+.md-button.md-default-theme:not([disabled]){
+  font-size: 30px;
+  min-width: 200px;
+  min-height: 70px;
+}
+
 .md-button.md-raised:not([disabled]) {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26); }
 
@@ -410,3 +416,12 @@ md-toast.md-error-toast-theme .md-toast-content {
 }
 
 .material-icons.md-36 { font-size: 36px; }
+
+.md-dialog-content {
+  min-width: 500px;
+  font-size: 30px;
+}
+
+.md-title {
+  font-size: 30px !important;
+}
