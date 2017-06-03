@@ -74,6 +74,7 @@ function($http, $q, userModel, localStorageService, timeTrackingService, company
                 else
                     requestData.manager = null;
 
+                data.confidence = 100;
                 timeTrackingService.punchTime(data);
 
                 $http({
