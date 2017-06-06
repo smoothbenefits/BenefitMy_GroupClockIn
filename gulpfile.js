@@ -14,7 +14,6 @@ var uglify = require('gulp-uglify');
 var minifyCSS = require('gulp-minify-css');
 var clean = require('gulp-clean');
 var runSequence = require('run-sequence');
-var gutil = require('gulp-util');
 var path = require('path');
 var fs = require('fs');
 var ngAnnotate = require('gulp-ng-annotate');
@@ -61,6 +60,8 @@ gulp.task('add-annotation', function () {
 gulp.task('copy-files', function () {
   gulp.src('./app/**/*.html')
     .pipe(gulp.dest('dist/app/'));
+
+  // gulp.src('./index.html').pipe(gulp.dest('dist/'));
 });
 
 gulp.task('copy-html-file', ['minify-css'], function () {
@@ -86,7 +87,7 @@ gulp.task('serve', function () {
   connect.server({
     root: './dist/',
     port: 9997,
-    livereload: true
+    livereload: false
   });
 });
 

@@ -1,0 +1,19 @@
+machine:
+  node:
+    version: 6.10.3
+test:
+  override:
+    - npm run preflight
+deployment:
+  staging:
+    branch: development
+    heroku:
+      appname: grouptimetrackingstg
+  demo:
+    branch: demo
+    heroku:
+      appname: grouptimetrackingdemo
+  production:
+    branch: master
+    heroku:
+      appname: grouptimetracking

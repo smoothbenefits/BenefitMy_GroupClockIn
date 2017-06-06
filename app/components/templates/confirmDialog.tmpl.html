@@ -4,23 +4,23 @@
             <div class="md-toolbar-tools">
                 <h2>We'll use this picture for you clock {{dialog_status}}.</h2>
                 <span flex></span>
-                <md-button class="md-icon-button"  aria-label="Close" ng-click="cancel()">
+                <md-button class="md-icon-button"  aria-label="Close" ng-disabled="uploading" ng-click="cancel()">
                     <md-icon class="material-icons" aria-label="Close dialog">clear</md-icon>
                 </md-button>
             </div>
         </md-toolbar>
         <md-dialog-content>
             <md-progress-linear md-mode="indeterminate" ng-show="uploading"></md-progress-linear>
-            <div class="md-dialog-content">
+            <div class="md-dialog-content" style=" margin: 0 auto; width: 600px">
                 <img data-ng-src="{{photo}}" style="max-height: 100%;" ng-if="photo"/>
             </div>
         </md-dialog-content>
-        <md-dialog-actions layout="row">
+        <md-dialog-actions layout="column">
             <span flex></span>
-            <md-button ng-click="answer('false')" aria-label="Cancel">
+            <md-button ng-click="answer('false')" class="md-raised md-large" ng-disabled="uploading" aria-label="Cancel">
                 Retake
             </md-button>
-            <md-button class="md-raised md-primary" ng-click="uploading=true; upload()" ng-disabled="uploading" aria-label="Use">
+            <md-button class="md-raised md-primary md-large" ng-click="uploading=true; upload()" ng-disabled="uploading" aria-label="Use">
                 Use
             </md-button>
         </md-dialog-actions>
