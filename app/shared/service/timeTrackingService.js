@@ -22,6 +22,13 @@ function(localStorageService, $http, $q, $httpParamSerializer, envService, userM
             var defer= $q.defer();
 
             var dateISO = new Date().toISOString();
+            var attributes = [];
+            if(localStorageService.get("location_state") !== null) {
+                attributes.push({
+                    "name": "State",
+                    "value": localStorageService.get("location_state")
+                });
+            }
 
             var requestData = {
                 "date" : dateISO,
@@ -49,6 +56,7 @@ function(localStorageService, $http, $q, $httpParamSerializer, envService, userM
                         "confidence": data.confidence
                     }
                 },
+                "attributes": attributes,
                 "inProgress": "true"
             };
 
@@ -76,6 +84,13 @@ function(localStorageService, $http, $q, $httpParamSerializer, envService, userM
             var defer= $q.defer();
 
             var dateISO = new Date().toISOString();
+            var attributes = [];
+            if(localStorageService.get("location_state") !== null) {
+                attributes.push({
+                    "name": "State",
+                    "value": localStorageService.get("location_state")
+                });
+            }
 
             var requestData = {
                 "date" : dateISO,
@@ -101,6 +116,7 @@ function(localStorageService, $http, $q, $httpParamSerializer, envService, userM
                         "confidence": data.confidence
                     }
                 },
+                "attributes": attributes,
                 "inProgress": "false"
             };
 

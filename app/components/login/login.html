@@ -11,15 +11,21 @@
 					<input required="" type="email" name="email" ng-model="email"
 						   minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
 				</md-input-container>
-				<md-input-container class="md-block">
-					<div id="signin-form">
+				<md-input-container class="md-block" style="margin: 18px 0px 2px 0px">
 						<label>Password</label>
 						<input required="" type="password" name="password" ng-model="password"/>
-					</div>
 				</md-input-container>
+				<div layout="row" layout-align="space-between">
+					<span style="margin:8px 0">Please select your state:</span>
+					<md-select ng-model="userState" placeholder="MA" style="margin:0">
+						<md-option ng-repeat="state in states" ng-value="state.abbrev">
+							{{state.abbrev}}
+						</md-option>
+					</md-select>
+				</div>
 			</div>
 			<div>
-				<md-button type="submit" class="md-raised md-primary">Submit</md-button>
+				<md-button type="submit" class="md-raised md-primary" style="margin:10px 0">Submit</md-button>
 			</div>
 			<span class="text-danger">{{error}}</span>
 		</form>
