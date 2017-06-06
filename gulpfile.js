@@ -21,6 +21,17 @@ var ngAnnotate = require('gulp-ng-annotate');
 var rev = require('gulp-rev');
 var revCollector = require('gulp-rev-collector');
 
+var pckg = require('./package.json');
+var versionContent = pckg.version;
+
+gulp.task('setVersion', function () {
+    console.log("setting version to:" + versionContent);
+    gulp.src('./index.html')
+        .pipe(replace('$$VERSION$$', versionContent))
+        .pipe(gulp.dest('dist/'));
+});
+
+
 // tasks
 gulp.task('lint', function() {
   gulp.src('./app/**/*.js')
