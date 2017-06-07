@@ -9,7 +9,7 @@
         if (lastStatus !== null && lastStatus.length > 0) {
             var date = new Date(lastStatus[0].start);
 
-            $scope.lastClockIn = "Your last Clock In time: " + date.toString("dddd, MMMM d, yyyy hh:mm tt");
+            $scope.lastClockIn = "Your last Clock In time: " + date.toString("dddd, MMMM d, hh:mm tt");
         }
 
         $scope.channel = webcamService.webcam.channel;
