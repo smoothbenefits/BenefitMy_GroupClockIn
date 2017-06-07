@@ -11,8 +11,8 @@
         </md-toolbar>
         <md-dialog-content>
             <md-progress-linear md-mode="indeterminate" ng-show="uploading"></md-progress-linear>
-            <div class="md-dialog-content" style=" margin: 0 auto; width: 600px">
-                <img data-ng-src="{{photo}}" style="max-height: 100%;" ng-if="photo"/>
+            <div class="md-dialog-content">
+                <img data-ng-src="{{photo}}" ng-if="photo"/>
             </div>
         </md-dialog-content>
         <md-dialog-actions layout="column">

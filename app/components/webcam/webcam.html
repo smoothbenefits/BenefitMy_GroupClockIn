@@ -1,6 +1,6 @@
 <div class="top-right-corner">
     <md-button class="md-fab" aria-label="exit" ng-click="exitWebcam()">
-        <i class="material-icons md-36" style="margin-top:10px">close</i>
+        <i class="material-icons md-36" id="webcam-close-button">close</i>
     </md-button>
 </div>
 <div ng-controller="WebcamCtrl" layout="column" layout-align="center center" style="height: 100%;">
@@ -14,10 +14,10 @@
         </div>
     </div>
 
-    <div flex ng-show="showButton" style="text-align: center">
-        <p style="font-size: 30px;" >Hi, {{username}}.</p>
-        <p style="font-size: 30px;">{{lastClockIn}}</p>
-        <md-button ng-click="makeSnapshot()" class="md-raised md-primary md-large" style="display: inline-block">clock {{status}}</md-button>
+    <div flex ng-show="showButton" id="webcam-content-block">
+        <p>Hi, {{username}}.</p>
+        <p>{{lastClockIn}}</p>
+        <md-button ng-click="makeSnapshot()" class="md-raised md-primary md-large">clock {{status}}</md-button>
     </div>
 
     <canvas ng-hide="true" id="snapshot" width="250" height="250"></canvas>
