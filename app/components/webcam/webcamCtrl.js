@@ -15,6 +15,7 @@
         $scope.channel = webcamService.webcam.channel;
 
         $scope.exitWebcam = function () {
+            webcamService.webcam.turnOff();
             $state.go("pinLogin");
         };
 
