@@ -121,7 +121,7 @@
 }
 
 #pin-enter-block {
-  width:350px; padding-top: 2em;
+  width:450px; padding-top: 2em;
 }
 
 #pin-delete-block {
@@ -133,7 +133,7 @@
 }
 
 #pin-input-block {
-  float: left; width:150px; padding-left: 65px;
+  float: left; padding-left: 65px;
 }
 
 #webcam-close-button {

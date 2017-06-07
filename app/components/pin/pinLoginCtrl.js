@@ -1,5 +1,6 @@
 //ng-annotate
-timeTrackingApp.controller("PinLoginCtrl", ["$scope", "$state", "$location", "$mdDialog", "userService", "userModel", "AuthService", "timeTrackingService", function($scope, $state, $location, $mdDialog, userService, userModel, AuthService, timeTrackingService) {
+timeTrackingApp.controller("PinLoginCtrl", ["$scope", "$state", "$location", "$mdDialog", "userService", "userModel", "AuthService", "timeTrackingService", "localStorageService",
+    function($scope, $state, $location, $mdDialog, userService, userModel, AuthService, timeTrackingService, localStorageService) {
     var input   = "";
 
     userModel.clearCurrentUser();
@@ -32,6 +33,13 @@ timeTrackingApp.controller("PinLoginCtrl", ["$scope", "$state", "$location", "$m
 
     $scope.pinDone = function() {
         $scope.isLoading = true;
+
+        if(input === "1234567890" ) {
+            localStorageService.clearAll();
+            $state.go("login");
+            window.location.reload();
+            return true;
+        }
 
         if(!AuthService.isLogin()) {
             $scope.isLoading = false;
