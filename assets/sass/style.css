@@ -14,28 +14,8 @@
   position: fixed;
   background: #FFFFFF; }
 
-.center {
-  margin: auto; }
-
-.center-block {
-  width: 200px;
-  height: 200px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  margin-top: -100px;
-  margin-left: -100px; }
-
 #canvas {
   display: none; }
-
-body.wrong {
-  -webkit-animation: bg-red 1s ease-in;
-  animation: bg-red 1s ease-in; }
-
-body.correct {
-  -webkit-animation: bg-green 1s ease-in;
-  animation: bg-green 1s ease-in; }
 
 #pin {
   background: #FFFFFF;
@@ -62,15 +42,6 @@ body.correct {
   margin: 2em auto;
   color: rgba(255, 255, 255, 0.2); }
 
-.dots {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  -webkit-justify-content: space-around;
-  -ms-flex-pack: distribute;
-  justify-content: space-around;
-  padding: 1em; }
-
 .dot {
   position: relative;
   background: rgba(255, 255, 255, 0.2);
@@ -83,20 +54,6 @@ body.correct {
   -webkit-transform: scale3d(0.7, 0.7, 0.7);
   transform: scale3d(0.7, 0.7, 0.7); }
 
-.dot.shows {
-  -webkit-animation: shows .9s ease;
-  animation: shows .9s ease; }
-
-.dot.active {
-  -webkit-animation: growDot .5s ease;
-  animation: growDot .5s ease;
-  -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards; }
-
-.dot.correct {
-  -webkit-animation: correct .9s ease;
-  animation: correct .9s ease; }
-
 .hint {
   font-size: 1.5em;
   color: #2aabd2;
@@ -108,155 +65,15 @@ body.correct {
   display: -ms-flexbox;
   display: flex;
   -webkit-flex-flow: row wrap;
-  -ms-flex-flow: row wrap;
   flex-flow: row wrap;
   -webkit-box-align: center;
   -webkit-align-items: center;
   -ms-flex-align: center;
-  align-items: center;
   -webkit-justify-content: space-around;
-  -ms-flex-pack: distribute;
   justify-content: space-around;
   -webkit-align-content: flex-end;
-  -ms-flex-line-pack: end;
   align-content: flex-end;
   margin: 1em 0; }
-
-.number {
-  position: relative;
-  width: 2.5em;
-  height: 2.5em;
-  margin: 0.5em;
-  border-radius: 2.5em;
-  border: 2px solid rgba(255, 255, 255, 0);
-  color: #2aabd2;
-  text-align: center;
-  line-height: 2.5em;
-  font-weight: 400;
-  font-size: 1.8em;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all .5s ease;
-  transition: all .5s ease; }
-
-.number:before {
-  content: "";
-  position: absolute;
-  left: -2px;
-  width: 2.5em;
-  height: 2.5em;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  border-radius: 2.5em;
-  -webkit-transition: all .5s ease;
-  transition: all .5s ease; }
-
-.number.grow:before {
-  -webkit-animation: grow .6s ease;
-  animation: grow .6s ease; }
-
-@-webkit-keyframes growDot {
-  100% {
-    background: white;
-    -webkit-transform: scale3d(0.9, 0.9, 0.9);
-    transform: scale3d(0.9, 0.9, 0.9); } }
-@keyframes growDot {
-  100% {
-    background: lightseagreen;
-    -webkit-transform: scale3d(0.9, 0.9, 0.9);
-    transform: scale3d(0.9, 0.9, 0.9); } }
-@-webkit-keyframes grow {
-  50% {
-    -webkit-transform: scale3d(1.5, 1.5, 1.5);
-    transform: scale3d(1.5, 1.5, 1.5); }
-  100% {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1); } }
-@keyframes grow {
-  50% {
-    -webkit-transform: scale3d(1.5, 1.5, 1.5);
-    transform: scale3d(1.5, 1.5, 1.5); }
-  100% {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1); } }
-@-webkit-keyframes shows {
-  20% {
-    background: #60DFE5; }
-  40% {
-    -webkit-transform: translate(-15px, 0);
-    transform: translate(-15px, 0); }
-  60% {
-    -webkit-transform: translate(10px, 0);
-    transform: translate(10px, 0); }
-  80% {
-    -webkit-transform: translate(-5px, 0);
-    transform: translate(-5px, 0); } }
-@keyframes shows {
-  20% {
-    background: #60DFE5; }
-  40% {
-    -webkit-transform: translate(-15px, 0);
-    transform: translate(-15px, 0); }
-  60% {
-    -webkit-transform: translate(10px, 0);
-    transform: translate(10px, 0); }
-  80% {
-    -webkit-transform: translate(-5px, 0);
-    transform: translate(-5px, 0); } }
-@-webkit-keyframes correct {
-  20% {
-    background: #60DFE5; }
-  40% {
-    -webkit-transform: translate(0, -15px);
-    transform: translate(0, -15px); }
-  60% {
-    -webkit-transform: translate(0, 10px);
-    transform: translate(0, 10px); }
-  80% {
-    -webkit-transform: translate(0, -5px);
-    transform: translate(0, -5px); } }
-@keyframes correct {
-  20% {
-    background: #60DFE5; }
-  40% {
-    -webkit-transform: translate(0, -15px);
-    transform: translate(0, -15px); }
-  60% {
-    -webkit-transform: translate(0, 10px);
-    transform: translate(0, 10px); }
-  80% {
-    -webkit-transform: translate(0, -5px);
-    transform: translate(0, -5px); } }
-@-webkit-keyframes bg-red {
-  50% {
-    background: crimson; } }
-@keyframes bg-red {
-  50% {
-    background: crimson; } }
-@-webkit-keyframes bg-green {
-  50% {
-    background: #60DFE5; } }
-@keyframes bg-green {
-  50% {
-    background: #60DFE5; } }
-.img-circle {
-  border-radius: 50%; }
-
-.webcam-cicle {
-  margin: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  object-fit: cover;
-  width: 600px;
-  height: 600px;
-  border-radius: 300px;
-  -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%); }
-
-.capture-button {
-  margin: 120px; }
 
 .md-button.md-default-theme:not([disabled]) {
   font-size: 30px;
@@ -272,26 +89,61 @@ body.correct {
   min-width: 90%;
   height: 70px; }
 
-/* this import should be first line in css file else add as <link> in html*/
-.widget-clock.blue-light .digital {
-  text-align: center; }
-
-.widget-clock.blue-light .time {
-  font-family: 'Rationale', sans-serif;
-  font-size: 3.0em;
-  color: #1da4eb; }
-
 .material-icons.md-96 {
   margin: auto;
   font-size: 96px;
   position: relative; }
 
-/*# sourceMappingURL=style.css.map */
 .login-logo {
   text-align: center;
   margin-top: 2em;
-  font-weight: 300;
-  font-family: 'Arial'; }
+}
+
+#login-img {
+  width:232px;
+  height:60px;
+}
+
+#password-container {
+  margin: 18px 0px 2px 0px;
+}
+
+#login-select {
+  margin:0;
+}
+
+#login-select-hint {
+  margin:8px 0;
+}
+
+#login-submit-button {
+  margin:10px 0;
+}
+
+#pin-enter-block {
+  width:450px; padding-top: 2em;
+}
+
+#pin-delete-block {
+  float: right; text-align:center; line-height:80px;
+}
+
+#pin-delete-img {
+  padding-left: 65px; cursor: pointer; vertical-align: middle;
+}
+
+#pin-input-block {
+  float: left; padding-left: 65px;
+}
+
+#webcam-close-button {
+  margin-top:10px;
+}
+
+#webcam-content-block {
+  text-align: center;
+  font-size: 30px;
+}
 
 .login-form {
   width: 380px;
@@ -310,33 +162,10 @@ body.correct {
   height: 95%;
   border-radius: 0; }
 
-md-toast.md-error-toast-theme .md-toast-content {
-  background-color: red; }
-
-.numpad-container {
-  margin: 0;
-  padding: 0;
-  font-family: 'Lato' , sans-serif;
-  color: #333;
-  background-size: 100%;
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-size-adjust: none;
-  background-color: #475264; }
-
 .span4 {
   width: 150px;
   float: left;
   margin: 0 8px 10px 8px; }
-
-.phone {
-  margin-top: 15px;
-  background: #fff; }
-
-.tel {
-  margin-bottom: 10px;
-  margin-top: 10px;
-  border: 1px solid #9e9e9e;
-  border-radius: 0px; }
 
 .num-pad {
   padding-left: 15px; }
@@ -359,40 +188,12 @@ md-toast.md-error-toast-theme .md-toast-content {
   line-height: 30px;
   color: #9EDCF4; }
 
-.btn {
-  font-weight: bold;
-  -webkit-transition: .1s ease-in background-color;
-  -webkit-font-smoothing: antialiased;
-  letter-spacing: 1px; }
-
-.spanicons {
-  width: 72px;
-  float: left;
-  text-align: center;
-  margin-top: 40px;
-  color: #9e9e9e;
-  font-size: 30px;
-  cursor: pointer; }
-
-.helper {
-  display: inline-block;
-  height: 100%;
-  vertical-align: middle; }
-
 :focus {
   outline: none; }
-
-::-moz-focus-inner {
-  border: 0; }
 
 .text-animation {
   -webkit-animation: fadein 0.5s; }
 
-@-webkit-keyframes fadein {
-  from {
-    opacity: 0; }
-  to {
-    opacity: 1; } }
 .top-right-corner {
   position: absolute;
   top: 20px;
@@ -403,9 +204,10 @@ md-toast.md-error-toast-theme .md-toast-content {
 
 .md-dialog-content {
   min-width: 500px;
-  font-size: 30px; }
+  font-size: 30px;
+  margin: 0 auto;
+  width: 600px
+}
 
 .md-title {
   font-size: 30px !important; }
-
-/*# sourceMappingURL=style.css.map */

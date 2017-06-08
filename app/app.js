@@ -141,13 +141,13 @@ timeTrackingApp.config(['envServiceProvider', function (envServiceProvider) {
         "EnvironmentPrefix": "stage_"
       },
       demo: {
-        "WorkBenefitsMeUrl": "https://benefitmy-python-demo.herokuapp.com/api/v1/",
+        "WorkBenefitsMeUrl": "https://benefitmy-python-sales.herokuapp.com/api/v1/",
         "TimeTrackingServiceUrl": "https://demotimetracking.workbenefits.me/api/v1/",
-        "environment": "staging",
+        "environment": "demo",
         "AWSAccessKeyId": "AKIAJVLVZOIR5KDYVMTA",
         "AWSSecretAccessKey": "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",
         "ImageS3Bucket": "benefitmy-staging-profile-assets",
-        "EnvironmentPrefix": "demo_"
+        "EnvironmentPrefix": "demo2_"
       },
       production: {
         "WorkBenefitsMeUrl": "https://app.workbenefits.me/api/v1/",

@@ -1,12 +1,12 @@
 <div class="anim-fade">
 		<md-progress-linear md-mode="indeterminate" ng-show="isLoading"></md-progress-linear>
 		<div id="pin">
-			<div style="width:350px; padding-top: 2em">
-				<div style="float: left; width:150px; padding-left: 65px">
+			<div id="pin-enter-block">
+				<div id="pin-input-block">
 					<div id="input_field" class="dot" ng-bind="pin_input" flex></div>
 				</div>
-				<div style="float: right; text-align:center;line-height:80px;" ng-click="pinBackspace()">
-					<img src="assets/delete.png" style="padding-left: 65px; cursor: pointer; vertical-align: middle;"/>
+				<div id="pin-delete-block" ng-click="pinBackspace()">
+					<img src="assets/delete.png" id="pin-delete-img"/>
 				</div>
 			</div>
 			<p class="hint">Please enter your PIN and press Login</p>
