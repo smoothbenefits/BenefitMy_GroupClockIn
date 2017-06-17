@@ -37,7 +37,7 @@ timeTrackingApp.controller("PinLoginCtrl", ["$scope", "$state", "$location", "$m
         if(input === "1234567890" ) {
             localStorageService.clearAll();
             $state.go("login");
-            window.location.reload();
+            window.location.reload(true);
             return true;
         }
 
