@@ -5,16 +5,16 @@ timeTrackingApp.controller("PinLoginCtrl", ["$scope", "$state", "$location", "$m
 
     userModel.clearCurrentUser();
 
-    var numbers = document.querySelectorAll(".num");
+    var numbers = document.querySelectorAll(".num-pad");
     numbers = Array.prototype.slice.call(numbers);
 
     numbers.forEach(function(number, index) {
-        number.addEventListener("click", function() {
+        number.addEventListener("mousedown", function() {
             switch(true) {
                 case (index < 9):
                     input += (index+1);
                     break;
-                case (index === 9):
+                case (index === 10):
                     input += 0;
                     break;
             }
@@ -58,12 +58,18 @@ timeTrackingApp.controller("PinLoginCtrl", ["$scope", "$state", "$location", "$m
 
             console.log(error);
 
-            //TODO we can show different error depending on response code
+            var errorMessage = {
+                "-1": "No Internet! Please make sure device connect to WIFI. try again!",
+                "400": "Your pin: " + input +" is invalid! Please try again",
+                "404": "Your pin: " + input +" is invalid! Please try again",
+                "500": "Service Error. Please try again!"
+            };
+
             $mdDialog.show(
                 $mdDialog.alert()
                     .clickOutsideToClose(true)
                     .title("Error Message")
-                    .textContent("Invalid Pin! Error Code:" + error.status)
+                    .textContent(errorMessage[error.status])
                     .ok('Okay!')
             ).finally(function () {
                 input = "";
