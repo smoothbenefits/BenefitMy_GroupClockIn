@@ -60,16 +60,18 @@ timeTrackingApp.controller("PinLoginCtrl", ["$scope", "$state", "$location", "$m
 
             var errorMessage = {
                 "-1": "No Internet! Please make sure device connect to WIFI. try again!",
-                "400": "Your pin: " + input +" is invalid! Please try again",
-                "404": "Your pin: " + input +" is invalid! Please try again",
+                "400": "Your pin: " + input +" is invalid! Please try again!",
+                "404": "Your pin: " + input +" is invalid! Please try again!",
                 "500": "Service Error. Please try again!"
             };
+
+            var displayMessage = "undefined" === typeof errorMessage[error.status] ? "Please try again!" : errorMessage[error.status];
 
             $mdDialog.show(
                 $mdDialog.alert()
                     .clickOutsideToClose(true)
                     .title("Error Message")
-                    .textContent(errorMessage[error.status])
+                    .textContent(displayMessage)
                     .ok('Okay!')
             ).finally(function () {
                 input = "";
