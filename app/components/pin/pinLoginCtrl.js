@@ -59,7 +59,7 @@ timeTrackingApp.controller("PinLoginCtrl", ["$scope", "$state", "$location", "$m
             console.log(error);
 
             var errorMessage = {
-                "-1": "No Internet! Please make sure device connect to WIFI. try again!",
+                "-1": "Please make sure the device is connected to the internet.",
                 "400": "Your pin: " + input +" is invalid! Please try again!",
                 "404": "Your pin: " + input +" is invalid! Please try again!",
                 "500": "Service Error. Please try again!"
