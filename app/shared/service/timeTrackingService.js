@@ -38,8 +38,8 @@ function(localStorageService, $http, $q, $httpParamSerializer, envService, userM
                 "recordType" : "Work Time",
                 "employee": {
                     "email" :  userModel.getUserEmail(),
-                    "lastName" : userModel.getCurrentUserFisrtName(),
-                    "firstName" : currentUser.last_name,
+                    "lastName" : currentUser.last_name,
+                    "firstName" : userModel.getCurrentUserFisrtName(),
                     "companyDescriptor" : environmentPrefix + companyModel.getCompanyID(),
                     "personDescriptor" : environmentPrefix + currentUser.person.user
                 },
@@ -97,8 +97,8 @@ function(localStorageService, $http, $q, $httpParamSerializer, envService, userM
                 "recordType" : "Work Time",
                 "employee": {
                     "email" :  userModel.getUserEmail(),
-                    "lastName" : userModel.getCurrentUserFisrtName(),
-                    "firstName" : currentUser.last_name,
+                    "lastName" : currentUser.last_name,
+                    "firstName" : userModel.getCurrentUserFisrtName(),
                     "companyDescriptor" : environmentPrefix + companyModel.getCompanyID(),
                     "personDescriptor" : environmentPrefix + currentUser.person.user
                 },
