@@ -93,7 +93,6 @@ function(localStorageService, $http, $q, $httpParamSerializer, envService, userM
             }
 
             var requestData = {
-                "date" : dateISO,
                 "recordType" : "Work Time",
                 "employee": {
                     "email" :  userModel.getUserEmail(),
